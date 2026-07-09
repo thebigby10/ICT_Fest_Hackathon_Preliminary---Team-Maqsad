@@ -541,6 +541,29 @@ booking; process 2 — a fresh interpreter simulating a restart — cancels it
 
 ---
 
+## 29. Malformed booking datetime crashes with `500` instead of `400 INVALID_BOOKING_WINDOW` — **Easy**
+
+**File:** `app/routers/bookings.py:88-89` (pre-fix)
+
+**Bug:** `create_booking` passed `payload.start_time` / `payload.end_time`
+(plain `str` fields on `BookingCreateRequest`, per the JSON wire contract)
+straight into `parse_input_datetime`, which calls `datetime.fromisoformat`.
+Nothing wrapped these calls: `app/main.py` only registers an error handler
+for the app's own `AppError`, no generic `Exception` handler exists. A
+malformed value like `"not-a-date"` raised an uncaught `ValueError` that
+propagated to a bare `500 Internal Server Error` instead of the documented
+`400 INVALID_BOOKING_WINDOW` (Errors table: "past start, non-whole/
+out-of-range duration, or `end_time` ≤ `start_time`" — malformed input falls
+under the same validation family and must not crash the service, per Rule 16
+as well).
+
+**Fix:** Wrapped both `parse_input_datetime` calls in a `try/except
+ValueError`, raising `AppError(400, "INVALID_BOOKING_WINDOW", …)` on parse
+failure, matching the pattern already used by the adjacent future-time and
+duration checks.
+
+---
+
 ## Score summary
 
 | # | Bug | Difficulty | Points |
@@ -573,8 +596,9 @@ booking; process 2 — a fresh interpreter simulating a restart — cancels it
 | 26 | Room stats lost on server restart | Hard | 10 |
 | 27 | Reference-code counter resets on server restart | Hard | 10 |
 | 28 | Lazy stats init: pre-read cancel corrupts stats after restart | Hard | 10 |
+| 29 | Malformed booking datetime crashes with 500 instead of 400 | Easy | 3 |
 
-**Total: 191 points** (6 Easy × 3 = 18, 9 Medium × 5 = 45, 13 Hard × 10 = 130)
+**Total: 194 points** (7 Easy × 3 = 21, 9 Medium × 5 = 45, 13 Hard × 10 = 130)
 
 ---
 
