@@ -634,61 +634,43 @@ invalidation is silently discarded instead of caching stale data.
 
 ---
 
-## Score summary
+## Fixes summary
 
-| # | Bug | Difficulty | Points |
-|---|-----|------------|--------|
-| 1 | Access token lifetime x60 | Easy | 3 |
-| 2 | Logout checks `sub` not `jti` | Medium | 5 |
-| 3 | Refresh tokens not single-use | Hard | 10 |
-| 4 | Duplicate username returns 200 | Easy | 3 |
-| 5 | `GET /bookings/{id}` leaks other members' bookings | Medium | 5 |
-| 6 | `GET /bookings/{id}` wrong `start_time` | Easy | 3 |
-| 7 | Booking start-time grace window | Easy | 3 |
-| 8 | Minimum duration unenforced | Easy | 3 |
-| 9 | Back-to-back bookings rejected | Medium | 5 |
-| 10 | Double-booking race | Hard | 10 |
-| 11 | Quota race | Hard | 10 |
-| 12 | Refund tier logic wrong | Medium | 5 |
-| 13 | Refund rounding inconsistent | Medium | 5 |
-| 14 | Concurrent cancel double-refund | Hard | 10 |
-| 15 | Cancel doesn't invalidate availability cache | Easy | 3 |
-| 16 | Pagination broken (offset/limit/order) | Medium | 5 |
-| 17 | Reference code race | Hard | 10 |
-| 18 | Rate limiter race | Hard | 10 |
-| 19 | Stats lost-update race | Hard | 10 |
-| 20 | Notification lock-ordering deadlock | Hard | 10 |
-| 21 | Admin export cross-org leak | Hard | 10 |
-| 22 | No Swagger Authorize button (bearer not declared as OpenAPI security scheme) | Easy | 3 |
-| 23 | `parse_input_datetime` doesn't convert timezone offset to UTC | Medium | 5 |
-| 24 | Missing `cache.invalidate_report` in `create_booking` | Medium | 5 |
-| 25 | Admin incorrectly subject to booking quota | Medium | 5 |
-| 26 | Room stats lost on server restart | Hard | 10 |
-| 27 | Reference-code counter resets on server restart | Hard | 10 |
-| 28 | Lazy stats init: pre-read cancel corrupts stats after restart | Hard | 10 |
-| 29 | Malformed booking datetime crashes with 500 instead of 400 | Easy | 3 |
-| 30 | Concurrent duplicate registration crashes with 500 instead of 409 | Hard | 10 |
-| 31 | Refresh-token single-use check not atomic (replayable) | Hard | 10 |
-| 32 | Report/availability cache lost-invalidation race | Hard | 10 |
+| # | Bug | Difficulty |
+|---|-----|------------|
+| 1 | Access token lifetime x60 | Easy |
+| 2 | Logout checks `sub` not `jti` | Medium |
+| 3 | Refresh tokens not single-use | Hard |
+| 4 | Duplicate username returns 200 | Easy |
+| 5 | `GET /bookings/{id}` leaks other members' bookings | Medium |
+| 6 | `GET /bookings/{id}` wrong `start_time` | Easy |
+| 7 | Booking start-time grace window | Easy |
+| 8 | Minimum duration unenforced | Easy |
+| 9 | Back-to-back bookings rejected | Medium |
+| 10 | Double-booking race | Hard |
+| 11 | Quota race | Hard |
+| 12 | Refund tier logic wrong | Medium |
+| 13 | Refund rounding inconsistent | Medium |
+| 14 | Concurrent cancel double-refund | Hard |
+| 15 | Cancel doesn't invalidate availability cache | Easy |
+| 16 | Pagination broken (offset/limit/order) | Medium |
+| 17 | Reference code race | Hard |
+| 18 | Rate limiter race | Hard |
+| 19 | Stats lost-update race | Hard |
+| 20 | Notification lock-ordering deadlock | Hard |
+| 21 | Admin export cross-org leak | Hard |
+| 22 | No Swagger Authorize button (bearer not declared as OpenAPI security scheme) | Easy |
+| 23 | `parse_input_datetime` doesn't convert timezone offset to UTC | Medium |
+| 24 | Missing `cache.invalidate_report` in `create_booking` | Medium |
+| 25 | Admin incorrectly subject to booking quota | Medium |
+| 26 | Room stats lost on server restart | Hard |
+| 27 | Reference-code counter resets on server restart | Hard |
+| 28 | Lazy stats init: pre-read cancel corrupts stats after restart | Hard |
+| 29 | Malformed booking datetime crashes with 500 instead of 400 | Easy |
+| 30 | Concurrent duplicate registration crashes with 500 instead of 409 | Hard |
+| 31 | Refresh-token single-use check not atomic (replayable) | Hard |
+| 32 | Report/availability cache lost-invalidation race | Hard |
 
-**Total: 224 points** (7 Easy × 3 = 21, 9 Medium × 5 = 45, 16 Hard × 10 = 160)
+**Total: 32 bugs fixed** (7 Easy, 9 Medium, 16 Hard)
 
----
 
-## Verification
-
-- `pytest tests/` — passes (existing smoke test).
-- Manual end-to-end script exercising: duplicate-username 409, access-token
-  900s lifetime, back-to-back bookings, overlap conflict, zero-duration
-  rejection, 100%/50%/0% refund tiers, cross-member booking-read 404, logout
-  invalidation, refresh single-use, pagination ordering/limit — all pass.
-- Concurrency stress tests (`ThreadPoolExecutor`, 5–10 concurrent workers):
-  double-booking → exactly one `201`; quota → exactly 3 of 5 succeed;
-  concurrent cancel of one booking → exactly one `200` and exactly one
-  `RefundLog` row; 10 concurrent creates → 10 unique reference codes — all
-  pass.
-- Cross-org export leak test: exporting a foreign org's `room_id` with
-  `include_all=true` now returns an empty CSV body (header only).
-- Restart-simulation test (two separate interpreter processes sharing one DB
-  file): cancel-before-first-stats-read after a "restart" now yields
-  `{count: 0, revenue: 0}` instead of negative revenue.
