@@ -82,11 +82,24 @@ def create_refresh_token(user: User) -> str:
     return jwt.encode(payload, JWT_SECRET, algorithm=JWT_ALGORITHM)
 
 
+# Claims every token we issue carries. A validly-signed token missing any of
+# them (e.g. a forged one) must be rejected here, not left to 500 later when
+# int(sub) / payload[jti] dereference it.
+_REQUIRED_CLAIMS = {"sub", "org", "role", "jti", "iat", "exp", "type"}
+
+
 def decode_token(token: str) -> dict:
     try:
-        return jwt.decode(token, JWT_SECRET, algorithms=[JWT_ALGORITHM])
+        data = jwt.decode(token, JWT_SECRET, algorithms=[JWT_ALGORITHM])
     except jwt.PyJWTError:
         raise AppError(401, "UNAUTHORIZED", "Invalid or expired token")
+    if not _REQUIRED_CLAIMS <= data.keys():
+        raise AppError(401, "UNAUTHORIZED", "Invalid token payload")
+    try:
+        int(data["sub"])
+    except (TypeError, ValueError):
+        raise AppError(401, "UNAUTHORIZED", "Invalid token payload")
+    return data
 
 
 def revoke_access_token(payload: dict) -> None:
