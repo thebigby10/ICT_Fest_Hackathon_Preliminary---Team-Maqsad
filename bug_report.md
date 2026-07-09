@@ -450,6 +450,56 @@ state immediately").
 
 ---
 
+## 25. Admin incorrectly subject to booking quota — **Medium**
+
+**File:** `app/routers/bookings.py:110`
+
+**Bug:** `_check_quota(db, user.id, now, start)` was called unconditionally inside
+`create_booking`, applying the 3-booking limit to **all** users. Rule 4 states
+*"A **member** may hold at most 3 confirmed bookings"* — admins are explicitly
+excluded. An admin who tried to create a 4th booking within the 24h window was
+incorrectly blocked with `409 QUOTA_EXCEEDED`.
+
+**Fix:** Added a role guard: `if user.role == "member": _check_quota(...)`, so
+the quota check only runs for members, not admins.
+
+---
+
+## 26. Room stats lost on server restart — **Hard**
+
+**File:** `app/services/stats.py:9–10`
+
+**Bug:** `_stats` was a plain module-level dict starting empty. After a server
+restart every room returned `{"count": 0, "revenue": 0}` regardless of actual
+confirmed bookings in the database. Bug #19 fixed the concurrent lost-update race,
+but the restart-persistence issue meant stats were *never* consistent with the
+bookings after a restart. Violates Rule 14 ("always consistent with the bookings
+themselves, including after bursts of concurrent activity").
+
+**Fix:** Added `ensure_initialized(db)` that queries the database for all
+confirmed bookings grouped by room and populates `_stats` on first call.
+Called from the `room_stats` endpoint before `get()`. A double-checked
+locking pattern (`_initialized` flag + `_lock`) ensures it runs exactly once.
+
+---
+
+## 27. Reference-code counter resets on server restart — **Hard**
+
+**File:** `app/services/reference.py:9`
+
+**Bug:** `_counter` started at `{"value": 1000}` on every module load. After a
+server restart the counter recycled codes that already existed in the database,
+breaking Rule 7 ("Every booking's reference code is unique, including under
+concurrent creation"). Bug #17 fixed the concurrent-request race with a lock,
+but the counter had no persistence — a restart could produce duplicates.
+
+**Fix:** Added `ensure_initialized(db)` that queries the maximum reference code
+from the `bookings` table and sets `_counter["value"]` to `max_numeric + 1`.
+Called from `create_booking` before `next_reference_code()`. Double-checked
+locking ensures it runs exactly once, avoiding a DB query on every creation.
+
+---
+
 ## Score summary
 
 | # | Bug | Difficulty | Points |
@@ -478,8 +528,11 @@ state immediately").
 | 22 | No Swagger Authorize button (bearer not declared as OpenAPI security scheme) | Easy | 3 |
 | 23 | `parse_input_datetime` doesn't convert timezone offset to UTC | Medium | 5 |
 | 24 | Missing `cache.invalidate_report` in `create_booking` | Medium | 5 |
+| 25 | Admin incorrectly subject to booking quota | Medium | 5 |
+| 26 | Room stats lost on server restart | Hard | 10 |
+| 27 | Reference-code counter resets on server restart | Hard | 10 |
 
-**Total: 151 points** (6 Easy × 3 = 18, 8 Medium × 5 = 40, 10 Hard × 10 = 100)
+**Total: 181 points** (6 Easy × 3 = 18, 9 Medium × 5 = 45, 12 Hard × 10 = 120)
 
 ---
 

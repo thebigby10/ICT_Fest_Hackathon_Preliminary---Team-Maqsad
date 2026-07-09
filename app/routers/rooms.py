@@ -107,6 +107,7 @@ def room_stats(
     user: User = Depends(get_current_user),
 ):
     room = _get_org_room(db, room_id, user.org_id)
+    stats.ensure_initialized(db)
     current = stats.get(room.id)
     return {
         "room_id": room.id,

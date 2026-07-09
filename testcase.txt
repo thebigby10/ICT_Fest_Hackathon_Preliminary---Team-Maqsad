@@ -1,0 +1,613 @@
+# CoWork API — Test Cases (curl)
+#
+# Run against: uvicorn app.main:app --host 0.0.0.0 --port 8000
+#
+# Usage: source this file or copy-paste each block.
+# Tokens expire in 900s, so re-login if you get 401.
+# Start times use "$(date)" — run inside a shell for dynamic values.
+
+# ──────────────────────────────────────────────────────
+# SETUP: Helper variables (paste these first)
+# ──────────────────────────────────────────────────────
+BASE="http://localhost:8000"
+
+# ======================================================================
+# RULE 16 — Liveness
+# ======================================================================
+
+## TC-01: Health endpoint returns ok
+curl -s "$BASE/health"
+# Expected: HTTP 200, {"status":"ok"}
+
+# ======================================================================
+# RULE 15 — Registration
+# ======================================================================
+
+## TC-02: Register new org (creates org + admin)
+curl -s -X POST "$BASE/auth/register" \
+  -H "Content-Type: application/json" \
+  -d '{"org_name":"testorg","username":"alice","password":"pass123"}'
+# Expected: HTTP 201, {"user_id":1,"org_id":1,"username":"alice","role":"admin"}
+
+## TC-03: Register duplicate username in same org → 409
+curl -s -X POST "$BASE/auth/register" \
+  -H "Content-Type: application/json" \
+  -d '{"org_name":"testorg","username":"alice","password":"pass123"}'
+# Expected: HTTP 409, {"detail":"Username already taken in this organization","code":"USERNAME_TAKEN"}
+
+## TC-04: Register as member in existing org
+curl -s -X POST "$BASE/auth/register" \
+  -H "Content-Type: application/json" \
+  -d '{"org_name":"testorg","username":"bob","password":"pass123"}'
+# Expected: HTTP 201, {"user_id":2,"org_id":1,"username":"bob","role":"member"}
+
+## TC-05: Register cross-org (for multi-tenancy tests)
+curl -s -X POST "$BASE/auth/register" \
+  -H "Content-Type: application/json" \
+  -d '{"org_name":"otherorg","username":"charlie","password":"pass123"}'
+# Expected: HTTP 201, {"user_id":3,"org_id":2,"username":"charlie","role":"admin"}
+
+# ======================================================================
+# RULE 8 — Auth (Login / Refresh / Logout)
+# ======================================================================
+
+## TC-06: Login — valid credentials
+ALICE_TOKEN=$(curl -s -X POST "$BASE/auth/login" \
+  -H "Content-Type: application/json" \
+  -d '{"org_name":"testorg","username":"alice","password":"pass123"}' \
+  | python3 -c "import sys,json; print(json.load(sys.stdin)['access_token'])")
+echo "ALICE_TOKEN=$ALICE_TOKEN"
+# Expected: HTTP 200, {"access_token":"...","refresh_token":"...","token_type":"bearer"}
+
+## TC-07: Login — bad credentials → 401
+curl -s -X POST "$BASE/auth/login" \
+  -H "Content-Type: application/json" \
+  -d '{"org_name":"testorg","username":"alice","password":"wrongpass"}'
+# Expected: HTTP 401, {"detail":"Invalid username or password","code":"INVALID_CREDENTIALS"}
+
+## TC-08: Login — unknown org → 401
+curl -s -X POST "$BASE/auth/login" \
+  -H "Content-Type: application/json" \
+  -d '{"org_name":"nonexistent","username":"alice","password":"pass123"}'
+# Expected: HTTP 401, {"detail":"Invalid username or password","code":"INVALID_CREDENTIALS"}
+
+## TC-09: Access token has exactly 900s lifetime (decode the JWT to check exp - iat)
+# Decode the JWT payload to verify:
+python3 -c "
+import jwt,time
+tok = '$ALICE_TOKEN'
+# Secret from config.py — default dev secret
+data = jwt.decode(tok, 'cowork-dev-secret-change-me', algorithms=['HS256'])
+lifetime = data['exp'] - data['iat']
+print(f'Token lifetime: {lifetime}s (expect 900)')
+assert lifetime == 900, f'FAIL: lifetime {lifetime}s != 900s'
+print('PASS')
+"
+# Expected: Token lifetime: 900s
+
+## TC-10: Login and capture refresh token, then refresh
+# Login as bob (member) to get tokens
+BOB_LOGIN=$(curl -s -X POST "$BASE/auth/login" \
+  -H "Content-Type: application/json" \
+  -d '{"org_name":"testorg","username":"bob","password":"pass123"}')
+BOB_ACCESS=$(echo "$BOB_LOGIN" | python3 -c "import sys,json; print(json.load(sys.stdin)['access_token'])")
+BOB_REFRESH=$(echo "$BOB_LOGIN" | python3 -c "import sys,json; print(json.load(sys.stdin)['refresh_token'])")
+echo "BOB_ACCESS=$BOB_ACCESS"
+echo "BOB_REFRESH=$BOB_REFRESH"
+
+## TC-11: Refresh — returns new token pair
+REFRESH_RESULT=$(curl -s -X POST "$BASE/auth/refresh" \
+  -H "Content-Type: application/json" \
+  -d "{\"refresh_token\":\"$BOB_REFRESH\"}")
+echo "$REFRESH_RESULT"
+NEW_BOB_REFRESH=$(echo "$REFRESH_RESULT" | python3 -c "import sys,json; print(json.load(sys.stdin)['refresh_token'])")
+# Expected: HTTP 200, {"access_token":"...","refresh_token":"...","token_type":"bearer"}
+
+## TC-12: Reuse old refresh token → 401 (single-use enforcement)
+curl -s -X POST "$BASE/auth/refresh" \
+  -H "Content-Type: application/json" \
+  -d "{\"refresh_token\":\"$BOB_REFRESH\"}"
+# Expected: HTTP 401, {"detail":"Token has been revoked","code":"UNAUTHORIZED"}
+
+## TC-13: Logout invalidates access token
+# Use bob's NEW access token for this
+NEW_BOB_ACCESS=$(echo "$REFRESH_RESULT" | python3 -c "import sys,json; print(json.load(sys.stdin)['access_token'])")
+curl -s -X POST "$BASE/auth/logout" \
+  -H "Authorization: Bearer $NEW_BOB_ACCESS" \
+  -H "Content-Type: application/json" \
+  -d '{}'
+# Expected: HTTP 200, {"status":"ok"}
+
+## TC-14: Use revoked access token after logout → 401
+curl -s "$BASE/rooms" -H "Authorization: Bearer $NEW_BOB_ACCESS"
+# Expected: HTTP 401, {"detail":"Token has been revoked","code":"UNAUTHORIZED"}
+
+# ======================================================================
+# SETUP: Re-login users for subsequent tests
+# ======================================================================
+ALICE_TOKEN=$(curl -s -X POST "$BASE/auth/login" \
+  -H "Content-Type: application/json" \
+  -d '{"org_name":"testorg","username":"alice","password":"pass123"}' \
+  | python3 -c "import sys,json; print(json.load(sys.stdin)['access_token'])")
+
+BOB_TOKEN=$(curl -s -X POST "$BASE/auth/login" \
+  -H "Content-Type: application/json" \
+  -d '{"org_name":"testorg","username":"bob","password":"pass123"}' \
+  | python3 -c "import sys,json; print(json.load(sys.stdin)['access_token'])")
+
+CHARLIE_TOKEN=$(curl -s -X POST "$BASE/auth/login" \
+  -H "Content-Type: application/json" \
+  -d '{"org_name":"otherorg","username":"charlie","password":"pass123"}' \
+  | python3 -c "import sys,json; print(json.load(sys.stdin)['access_token'])")
+
+# ======================================================================
+# RULE 9 — Multi-tenancy / Rooms
+# ======================================================================
+
+## TC-15: List rooms (empty — no rooms yet)
+curl -s "$BASE/rooms" -H "Authorization: Bearer $ALICE_TOKEN"
+# Expected: HTTP 200, []
+
+## TC-16: Create room as admin → 201
+ROOM=$(curl -s -X POST "$BASE/rooms" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $ALICE_TOKEN" \
+  -d '{"name":"Conference Room A","capacity":10,"hourly_rate_cents":1500}')
+echo "$ROOM"
+ROOM_ID=$(echo "$ROOM" | python3 -c "import sys,json; print(json.load(sys.stdin)['id'])")
+ROOM2=$(curl -s -X POST "$BASE/rooms" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $ALICE_TOKEN" \
+  -d '{"name":"Focus Room B","capacity":2,"hourly_rate_cents":800}')
+ROOM2_ID=$(echo "$ROOM2" | python3 -c "import sys,json; print(json.load(sys.stdin)['id'])")
+# Expected: HTTP 201, {"id":1,"org_id":1,"name":"Conference Room A","capacity":10,"hourly_rate_cents":1500}
+
+## TC-17: Create room as member → 403
+curl -s -X POST "$BASE/rooms" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $BOB_TOKEN" \
+  -d '{"name":"Unauthorized Room","capacity":5,"hourly_rate_cents":1000}'
+# Expected: HTTP 403, {"detail":"Admin privileges required","code":"FORBIDDEN"}
+
+## TC-18: List rooms — returns only caller's org rooms
+curl -s "$BASE/rooms" -H "Authorization: Bearer $BOB_TOKEN"
+# Expected: HTTP 200, 2 rooms (Conference Room A, Focus Room B)
+
+## TC-19: Other org user sees empty room list
+curl -s "$BASE/rooms" -H "Authorization: Bearer $CHARLIE_TOKEN"
+# Expected: HTTP 200, [] (no rooms in otherorg)
+
+# ======================================================================
+# RULE 2 — Booking creation (validation)
+# ======================================================================
+
+## TC-20: Create booking — valid (start 50h in future, 2h duration)
+FUTURE_50=$(python3 -c "from datetime import datetime,timedelta,timezone; print((datetime.now(timezone.utc)+timedelta(hours=50)).isoformat())")
+FUTURE_52=$(python3 -c "from datetime import datetime,timedelta,timezone; print((datetime.now(timezone.utc)+timedelta(hours=52)).isoformat())")
+BOOKING=$(curl -s -X POST "$BASE/bookings" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $BOB_TOKEN" \
+  -d "{\"room_id\":$ROOM_ID,\"start_time\":\"$FUTURE_50\",\"end_time\":\"$FUTURE_52\"}")
+echo "$BOOKING"
+# Expected: HTTP 201, Booking object with price_cents = 1500 * 2 = 3000
+
+## TC-21: Create booking — start_time in the past → 400
+PAST_TIME=$(python3 -c "from datetime import datetime,timedelta,timezone; print((datetime.now(timezone.utc)-timedelta(hours=1)).isoformat())")
+curl -s -X POST "$BASE/bookings" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $BOB_TOKEN" \
+  -d "{\"room_id\":$ROOM_ID,\"start_time\":\"$PAST_TIME\",\"end_time\":\"$FUTURE_52\"}"
+# Expected: HTTP 400, {"detail":"start_time must be in the future","code":"INVALID_BOOKING_WINDOW"}
+
+## TC-22: Create booking — non-whole hours duration → 400
+FUTURE_50=$(python3 -c "from datetime import datetime,timedelta,timezone; print((datetime.now(timezone.utc)+timedelta(hours=50)).isoformat())")
+FUTURE_52_5=$(python3 -c "from datetime import datetime,timedelta,timezone; print((datetime.now(timezone.utc)+timedelta(hours=52,minutes=30)).isoformat())")
+curl -s -X POST "$BASE/bookings" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $BOB_TOKEN" \
+  -d "{\"room_id\":$ROOM_ID,\"start_time\":\"$FUTURE_50\",\"end_time\":\"$FUTURE_52_5\"}"
+# Expected: HTTP 400, {"detail":"duration must be a whole number of hours","code":"INVALID_BOOKING_WINDOW"}
+
+## TC-23: Create booking — duration < 1 hour → 400
+curl -s -X POST "$BASE/bookings" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $BOB_TOKEN" \
+  -d "{\"room_id\":$ROOM_ID,\"start_time\":\"$FUTURE_50\",\"end_time\":\"$FUTURE_50\"}"
+# Expected: HTTP 400, {"detail":"duration out of range","code":"INVALID_BOOKING_WINDOW"}
+
+## TC-24: Create booking — duration > 8 hours → 400
+FUTURE_60=$(python3 -c "from datetime import datetime,timedelta,timezone; print((datetime.now(timezone.utc)+timedelta(hours=60)).isoformat())")
+curl -s -X POST "$BASE/bookings" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $BOB_TOKEN" \
+  -d "{\"room_id\":$ROOM_ID,\"start_time\":\"$FUTURE_50\",\"end_time\":\"$FUTURE_60\"}"
+# Expected: HTTP 400, {"detail":"duration out of range","code":"INVALID_BOOKING_WINDOW"}
+
+## TC-25: Create booking — end_time <= start_time → 400 (via duration check)
+curl -s -X POST "$BASE/bookings" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $BOB_TOKEN" \
+  -d "{\"room_id\":$ROOM_ID,\"start_time\":\"$FUTURE_52\",\"end_time\":\"$FUTURE_50\"}"
+# Expected: HTTP 400, {"detail":"duration out of range","code":"INVALID_BOOKING_WINDOW"}
+
+## TC-26: Create booking — room from another org → 404
+curl -s -X POST "$BASE/bookings" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $CHARLIE_TOKEN" \
+  -d "{\"room_id\":$ROOM_ID,\"start_time\":\"$FUTURE_50\",\"end_time\":\"$FUTURE_52\"}"
+# Expected: HTTP 404, {"detail":"Room not found","code":"ROOM_NOT_FOUND"}
+
+## TC-27: Create booking — with timezone offset input (Rule 1)
+# Offset +05:00 should be converted to UTC: 10:00+05:00 → stored as 05:00 UTC
+FUTURE_UTC=$(python3 -c "from datetime import datetime,timedelta,timezone; print((datetime.now(timezone.utc)+timedelta(hours=72)).isoformat())")
+# Add +05:00 offset to the time
+OFFSET_TIME=$(python3 -c "
+from datetime import datetime,timedelta,timezone
+utc = datetime.now(timezone.utc)+timedelta(hours=72)
+# Convert to +05:00 representation (5 hours ahead)
+plus5 = utc.astimezone(timezone(timedelta(hours=5)))
+print(plus5.isoformat())
+")
+OFFSET_END=$(python3 -c "
+from datetime import datetime,timedelta,timezone
+utc = datetime.now(timezone.utc)+timedelta(hours=74)
+plus5 = utc.astimezone(timezone(timedelta(hours=5)))
+print(plus5.isoformat())
+")
+curl -s -X POST "$BASE/bookings" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $ALICE_TOKEN" \
+  -d "{\"room_id\":$ROOM_ID,\"start_time\":\"$OFFSET_TIME\",\"end_time\":\"$OFFSET_END\"}"
+# Expected: HTTP 201. The stored start_time should be UTC (same as FUTURE_UTC), not shifted by +5h.
+
+# ======================================================================
+# RULE 3 — No double-booking
+# ======================================================================
+
+## TC-28: Double-booking conflict (same time slot) → 409
+SAME_START=$(python3 -c "from datetime import datetime,timedelta,timezone; print((datetime.now(timezone.utc)+timedelta(hours=50)).isoformat())")
+SAME_END=$(python3 -c "from datetime import datetime,timedelta,timezone; print((datetime.now(timezone.utc)+timedelta(hours=52)).isoformat())")
+curl -s -X POST "$BASE/bookings" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $ALICE_TOKEN" \
+  -d "{\"room_id\":$ROOM_ID,\"start_time\":\"$SAME_START\",\"end_time\":\"$SAME_END\"}"
+# Expected: HTTP 409, {"detail":"Room already booked for this interval","code":"ROOM_CONFLICT"}
+
+## TC-29: Back-to-back bookings allowed (no overlap → 201)
+BACK_START=$(python3 -c "from datetime import datetime,timedelta,timezone; print((datetime.now(timezone.utc)+timedelta(hours=52)).isoformat())")
+BACK_END=$(python3 -c "from datetime import datetime,timedelta,timezone; print((datetime.now(timezone.utc)+timedelta(hours=54)).isoformat())")
+curl -s -X POST "$BASE/bookings" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $ALICE_TOKEN" \
+  -d "{\"room_id\":$ROOM_ID,\"start_time\":\"$BACK_START\",\"end_time\":\"$BACK_END\"}"
+# Expected: HTTP 201 (back-to-back = no overlap per Rule 3)
+
+# ======================================================================
+# RULE 4 — Booking quota (member only)
+# ======================================================================
+
+## TC-30: Member quota — create 3 bookings within 24h window
+# Bob creates 3 short bookings starting within next 24h
+for i in 2 5 8; do
+  START=$(python3 -c "from datetime import datetime,timedelta,timezone; print((datetime.now(timezone.utc)+timedelta(hours=$i)).isoformat())")
+  END=$(python3 -c "from datetime import datetime,timedelta,timezone; print((datetime.now(timezone.utc)+timedelta(hours=$((i+1)))).isoformat())")
+  curl -s -X POST "$BASE/bookings" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $BOB_TOKEN" \
+    -d "{\"room_id\":$ROOM2_ID,\"start_time\":\"$START\",\"end_time\":\"$END\"}"
+  echo ""
+done
+# Expected: First 3 → HTTP 201, fourth below → HTTP 409 QUOTA_EXCEEDED
+
+## TC-31: Member quota exceeded → 409
+START4=$(python3 -c "from datetime import datetime,timedelta,timezone; print((datetime.now(timezone.utc)+timedelta(hours=10)).isoformat())")
+END4=$(python3 -c "from datetime import datetime,timedelta,timezone; print((datetime.now(timezone.utc)+timedelta(hours=11)).isoformat())")
+curl -s -X POST "$BASE/bookings" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $BOB_TOKEN" \
+  -d "{\"room_id\":$ROOM2_ID,\"start_time\":\"$START4\",\"end_time\":\"$END4\"}"
+# Expected: HTTP 409, {"detail":"Booking quota exceeded","code":"QUOTA_EXCEEDED"}
+
+## TC-32: Admin is NOT subject to booking quota (Bug C verification)
+# Admin alice creates 4+ bookings within 24h window — should all succeed
+for i in 1 4 7 12; do
+  ASTART=$(python3 -c "from datetime import datetime,timedelta,timezone; print((datetime.now(timezone.utc)+timedelta(hours=$i)).isoformat())")
+  AEND=$(python3 -c "from datetime import datetime,timedelta,timezone; print((datetime.now(timezone.utc)+timedelta(hours=$((i+1)))).isoformat())")
+  curl -s -X POST "$BASE/bookings" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $ALICE_TOKEN" \
+    -d "{\"room_id\":$ROOM2_ID,\"start_time\":\"$ASTART\",\"end_time\":\"$AEND\"}"
+  echo ""
+done
+# Expected: ALL HTTP 201 (admins exempt from quota)
+
+# ======================================================================
+# RULE 5 — Rate limit
+# ======================================================================
+
+## TC-33: Rate limiting — 20+ requests in 60s → 429
+# Requires rapid-fire script. Long-running test:
+for i in $(seq 1 25); do
+  START=$(python3 -c "from datetime import datetime,timedelta,timezone; d=datetime.now(timezone.utc)+timedelta(hours=$((80+$i))); print(d.isoformat())")
+  END=$(python3 -c "from datetime import datetime,timedelta,timezone; d=datetime.now(timezone.utc)+timedelta(hours=$((81+$i))); print(d.isoformat())")
+  STATUS=$(curl -s -o /dev/null -w "%{http_code}" -X POST "$BASE/bookings" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $ALICE_TOKEN" \
+    -d "{\"room_id\":$ROOM_ID,\"start_time\":\"$START\",\"end_time\":\"$END\"}")
+  echo "Request $i: $STATUS"
+  if [ "$STATUS" = "429" ]; then
+    echo "RATE_LIMITED at request $i (expected by 21st)"
+    break
+  fi
+done
+# Expected: Requests 1-20 → HTTP 201/409, Request 21+ → HTTP 429 RATE_LIMITED
+
+# ======================================================================
+# RULE 7 — Reference codes
+# ======================================================================
+
+## TC-34: Each booking gets a unique reference code (format CW-XXXXXX)
+# Check the booking from TC-20:
+echo "$BOOKING" | python3 -c "import sys,json; b=json.load(sys.stdin); print(b['reference_code']); assert b['reference_code'].startswith('CW-')"
+# Expected: Reference code like "CW-001000"
+
+# ======================================================================
+# RULE 11 — Pagination & ordering
+# ======================================================================
+
+## TC-35: List own bookings — default pagination
+curl -s "$BASE/bookings" -H "Authorization: Bearer $BOB_TOKEN" | python3 -m json.tool
+# Expected: {"items":[...], "page":1, "limit":10, "total":N}
+# Items sorted ascending by start_time, ties by id
+
+## TC-36: List own bookings — explicit pagination
+curl -s "$BASE/bookings?page=1&limit=2" -H "Authorization: Bearer $BOB_TOKEN" | python3 -m json.tool
+# Expected: {"items":[...], "page":1, "limit":2, "total":N}
+# Items sorted ascending by start_time, ties by id
+
+## TC-37: Pagination — page beyond data returns empty items
+curl -s "$BASE/bookings?page=999&limit=10" -H "Authorization: Bearer $BOB_TOKEN" | python3 -m json.tool
+# Expected: {"items":[], "page":999, "limit":10, "total":N}
+
+## TC-38: Pagination — limit capped at 100
+curl -s "$BASE/bookings?limit=999" -H "Authorization: Bearer $BOB_TOKEN" | python3 -m json.tool
+# Expected: HTTP 422 (FastAPI validation)
+
+# ======================================================================
+# RULE 10 — Booking visibility
+# ======================================================================
+
+## TC-39: Get own booking → 200 with full details
+ALICE_BOOKING=$(curl -s "$BASE/bookings" -H "Authorization: Bearer $ALICE_TOKEN")
+ALICE_BOOKING_ID=$(echo "$ALICE_BOOKING" | python3 -c "import sys,json; items=json.load(sys.stdin)['items']; print(items[0]['id'])")
+curl -s "$BASE/bookings/$ALICE_BOOKING_ID" -H "Authorization: Bearer $ALICE_TOKEN" | python3 -m json.tool
+# Expected: HTTP 200, Booking object with "refunds" array
+
+## TC-40: Member reads another member's booking → 404
+BOB_BOOKING=$(curl -s "$BASE/bookings" -H "Authorization: Bearer $BOB_TOKEN")
+BOB_BOOKING_ID=$(echo "$BOB_BOOKING" | python3 -c "import sys,json; items=json.load(sys.stdin)['items']; print(items[0]['id'] if items else 'none')")
+curl -s "$BASE/bookings/$BOB_BOOKING_ID" -H "Authorization: Bearer $ALICE_TOKEN"
+# Expected: HTTP 404, {"detail":"Booking not found","code":"BOOKING_NOT_FOUND"}
+
+## TC-41: Admin reads any booking in org → 200
+curl -s "$BASE/bookings/$BOB_BOOKING_ID" -H "Authorization: Bearer $ALICE_TOKEN" | python3 -m json.tool
+# Expected: HTTP 200 (admin can read any org booking)
+
+## TC-42: Cross-org user reads booking → 404
+curl -s "$BASE/bookings/$BOB_BOOKING_ID" -H "Authorization: Bearer $CHARLIE_TOKEN"
+# Expected: HTTP 404, {"detail":"Booking not found","code":"BOOKING_NOT_FOUND"}
+
+# ======================================================================
+# RULE 6 — Cancellation & Refund
+# ======================================================================
+
+## TC-43: Cancel booking — own booking (0% refund, notice < 24h)
+# Create a booking starting in 2h (short notice)
+SHORT_START=$(python3 -c "from datetime import datetime,timedelta,timezone; print((datetime.now(timezone.utc)+timedelta(hours=2)).isoformat())")
+SHORT_END=$(python3 -c "from datetime import datetime,timedelta,timezone; print((datetime.now(timezone.utc)+timedelta(hours=3)).isoformat())")
+SHORT_BOOKING=$(curl -s -X POST "$BASE/bookings" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $BOB_TOKEN" \
+  -d "{\"room_id\":$ROOM2_ID,\"start_time\":\"$SHORT_START\",\"end_time\":\"$SHORT_END\"}")
+SHORT_ID=$(echo "$SHORT_BOOKING" | python3 -c "import sys,json; print(json.load(sys.stdin)['id'])")
+curl -s -X POST "$BASE/bookings/$SHORT_ID/cancel" \
+  -H "Authorization: Bearer $BOB_TOKEN"
+# Expected: HTTP 200, {"id":...,"status":"cancelled","refund_percent":0,"refund_amount_cents":0}
+
+## TC-44: Cancel already cancelled booking → 409
+curl -s -X POST "$BASE/bookings/$SHORT_ID/cancel" \
+  -H "Authorization: Bearer $BOB_TOKEN"
+# Expected: HTTP 409, {"detail":"Booking already cancelled","code":"ALREADY_CANCELLED"}
+
+## TC-45: Cancel booking — 50% refund (24h ≤ notice < 48h)
+MID_START=$(python3 -c "from datetime import datetime,timedelta,timezone; print((datetime.now(timezone.utc)+timedelta(hours=30)).isoformat())")
+MID_END=$(python3 -c "from datetime import datetime,timedelta,timezone; print((datetime.now(timezone.utc)+timedelta(hours=31)).isoformat())")
+MID_BOOKING=$(curl -s -X POST "$BASE/bookings" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $ALICE_TOKEN" \
+  -d "{\"room_id\":$ROOM_ID,\"start_time\":\"$MID_START\",\"end_time\":\"$MID_END\"}")
+MID_ID=$(echo "$MID_BOOKING" | python3 -c "import sys,json; print(json.load(sys.stdin)['id'])")
+MID_PRICE=$(echo "$MID_BOOKING" | python3 -c "import sys,json; print(json.load(sys.stdin)['price_cents'])")
+echo "Booking price: $MID_PRICE, Expected refund: $(( (MID_PRICE * 50 + 50) / 100 ))"
+curl -s -X POST "$BASE/bookings/$MID_ID/cancel" \
+  -H "Authorization: Bearer $ALICE_TOKEN"
+# Expected: HTTP 200, refund_percent=50, refund_amount_cents = (price*50+50)//100
+
+## TC-46: Cancel booking — 100% refund (notice ≥ 48h)
+# Use booking from TC-20 (started 50h in future, which is now <48h but was 50h when created)
+# Create a fresh one with 72h notice
+LONG_START=$(python3 -c "from datetime import datetime,timedelta,timezone; print((datetime.now(timezone.utc)+timedelta(hours=72)).isoformat())")
+LONG_END=$(python3 -c "from datetime import datetime,timedelta,timezone; print((datetime.now(timezone.utc)+timedelta(hours=74)).isoformat())")
+LONG_BOOKING=$(curl -s -X POST "$BASE/bookings" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $ALICE_TOKEN" \
+  -d "{\"room_id\":$ROOM_ID,\"start_time\":\"$LONG_START\",\"end_time\":\"$LONG_END\"}")
+LONG_ID=$(echo "$LONG_BOOKING" | python3 -c "import sys,json; print(json.load(sys.stdin)['id'])")
+LONG_PRICE=$(echo "$LONG_BOOKING" | python3 -c "import sys,json; print(json.load(sys.stdin)['price_cents'])")
+echo "Booking price: $LONG_PRICE, Expected refund: $LONG_PRICE"
+curl -s -X POST "$BASE/bookings/$LONG_ID/cancel" \
+  -H "Authorization: Bearer $ALICE_TOKEN"
+# Expected: HTTP 200, refund_percent=100, refund_amount_cents = price_cents (full refund)
+
+## TC-47: Admin cancels another member's booking → 200
+# Create booking as bob, cancel as alice (admin)
+ANON_START=$(python3 -c "from datetime import datetime,timedelta,timezone; print((datetime.now(timezone.utc)+timedelta(hours=96)).isoformat())")
+ANON_END=$(python3 -c "from datetime import datetime,timedelta,timezone; print((datetime.now(timezone.utc)+timedelta(hours=97)).isoformat())")
+ANON_BOOKING=$(curl -s -X POST "$BASE/bookings" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $BOB_TOKEN" \
+  -d "{\"room_id\":$ROOM2_ID,\"start_time\":\"$ANON_START\",\"end_time\":\"$ANON_END\"}")
+ANON_ID=$(echo "$ANON_BOOKING" | python3 -c "import sys,json; print(json.load(sys.stdin)['id'])")
+curl -s -X POST "$BASE/bookings/$ANON_ID/cancel" \
+  -H "Authorization: Bearer $ALICE_TOKEN"
+# Expected: HTTP 200 (admin can cancel any booking in org)
+
+## TC-48: Member cancels another member's booking → 404
+# Create booking as alice, cancel as bob (member)
+# (Need a new booking alice made that bob can't access)
+ALICE_NEW_START=$(python3 -c "from datetime import datetime,timedelta,timezone; print((datetime.now(timezone.utc)+timedelta(hours=120)).isoformat())")
+ALICE_NEW_END=$(python3 -c "from datetime import datetime,timedelta,timezone; print((datetime.now(timezone.utc)+timedelta(hours=121)).isoformat())")
+ALICE_NEW=$(curl -s -X POST "$BASE/bookings" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $ALICE_TOKEN" \
+  -d "{\"room_id\":$ROOM2_ID,\"start_time\":\"$ALICE_NEW_START\",\"end_time\":\"$ALICE_NEW_END\"}")
+ALICE_NEW_ID=$(echo "$ALICE_NEW" | python3 -c "import sys,json; print(json.load(sys.stdin)['id'])")
+curl -s -X POST "$BASE/bookings/$ALICE_NEW_ID/cancel" \
+  -H "Authorization: Bearer $BOB_TOKEN"
+# Expected: HTTP 404, {"detail":"Booking not found","code":"BOOKING_NOT_FOUND"}
+
+## TC-49: Cross-org cancellation → 404
+curl -s -X POST "$BASE/bookings/$ALICE_NEW_ID/cancel" \
+  -H "Authorization: Bearer $CHARLIE_TOKEN"
+# Expected: HTTP 404, {"detail":"Booking not found","code":"BOOKING_NOT_FOUND"}
+
+## TC-50: Verify RefundLog entry matches cancel response (Rule 6)
+# Get the booking detail and check refunds array
+curl -s "$BASE/bookings/$MID_ID" -H "Authorization: Bearer $ALICE_TOKEN" | python3 -c "
+import sys,json
+b = json.load(sys.stdin)
+print('Refunds:', b.get('refunds'))
+for r in b.get('refunds', []):
+    print(f'  amount_cents={r[\"amount_cents\"]}, status={r[\"status\"]}')
+"
+# Expected: Exactly one refund entry, amount_cents matches TC-45 refund_amount_cents
+
+# ======================================================================
+# RULE 13 — Availability
+# ======================================================================
+
+## TC-51: Room availability for a date
+# Use the same date as TC-20's booking start
+AVAIL_DATE=$(python3 -c "from datetime import datetime,timedelta,timezone; print((datetime.now(timezone.utc)+timedelta(hours=50)).strftime('%Y-%m-%d'))")
+curl -s "$BASE/rooms/$ROOM_ID/availability?date=$AVAIL_DATE" \
+  -H "Authorization: Bearer $BOB_TOKEN" | python3 -m json.tool
+# Expected: {"room_id":..., "date":"...", "busy":[{"start_time":"...","end_time":"..."},...]}
+# Busy intervals sorted ascending by start_time
+
+## TC-52: Availability for room in another org → 404
+curl -s "$BASE/rooms/$ROOM_ID/availability?date=$AVAIL_DATE" \
+  -H "Authorization: Bearer $CHARLIE_TOKEN"
+# Expected: HTTP 404, {"detail":"Room not found","code":"ROOM_NOT_FOUND"}
+
+# ======================================================================
+# RULE 14 — Room stats
+# ======================================================================
+
+## TC-53: Room stats match confirmed bookings
+curl -s "$BASE/rooms/$ROOM_ID/stats" -H "Authorization: Bearer $BOB_TOKEN" | python3 -m json.tool
+# Expected: {"room_id":..., "total_confirmed_bookings":N, "total_revenue_cents":M}
+# N should equal count of confirmed bookings for this room
+
+## TC-54: Room stats for another org → 404
+curl -s "$BASE/rooms/$ROOM_ID/stats" -H "Authorization: Bearer $CHARLIE_TOKEN"
+# Expected: HTTP 404, {"detail":"Room not found","code":"ROOM_NOT_FOUND"}
+
+# ======================================================================
+# RULE 12 — Usage Report (admin only)
+# ======================================================================
+
+## TC-55: Usage report — admin
+FROM_DATE=$(python3 -c "from datetime import datetime,timedelta,timezone; print((datetime.now(timezone.utc)-timedelta(days=1)).strftime('%Y-%m-%d'))")
+TO_DATE=$(python3 -c "from datetime import datetime,timedelta,timezone; print((datetime.now(timezone.utc)+timedelta(days=7)).strftime('%Y-%m-%d'))")
+curl -s "$BASE/admin/usage-report?from=$FROM_DATE&to=$TO_DATE" \
+  -H "Authorization: Bearer $ALICE_TOKEN" | python3 -m json.tool
+# Expected: {"from":"...","to":"...","rooms":[{"room_id":...,"room_name":"...","confirmed_bookings":N,"revenue_cents":M},...]}
+# Includes ALL rooms in org (even those with zero bookings)
+
+## TC-56: Usage report — member → 403
+curl -s "$BASE/admin/usage-report?from=$FROM_DATE&to=$TO_DATE" \
+  -H "Authorization: Bearer $BOB_TOKEN"
+# Expected: HTTP 403, {"detail":"Admin privileges required","code":"FORBIDDEN"}
+
+## TC-57: Usage report — includes zero-booking rooms
+# A room with no confirmed bookings should appear with confirmed_bookings=0, revenue_cents=0
+
+# ======================================================================
+# RULE 9 — Admin Export
+# ======================================================================
+
+## TC-58: Export CSV — admin (include_all=false → own bookings)
+curl -s "$BASE/admin/export?include_all=false" \
+  -H "Authorization: Bearer $ALICE_TOKEN"
+# Expected: HTTP 200, text/csv with header: id,reference_code,room_id,user_id,start_time,end_time,status,price_cents
+# Only alice's bookings included
+
+## TC-59: Export CSV — admin (include_all=true → all org bookings)
+curl -s "$BASE/admin/export?include_all=true" \
+  -H "Authorization: Bearer $ALICE_TOKEN"
+# Expected: CSV with ALL bookings in testorg
+
+## TC-60: Export CSV — member → 403
+curl -s "$BASE/admin/export" \
+  -H "Authorization: Bearer $BOB_TOKEN"
+# Expected: HTTP 403, {"detail":"Admin privileges required","code":"FORBIDDEN"}
+
+## TC-61: Export CSV — cross-org room_id yields empty body (Rule 9)
+# Create a room in otherorg first
+CHARLIE_ROOM=$(curl -s -X POST "$BASE/rooms" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $CHARLIE_TOKEN" \
+  -d '{"name":"Charlie Room","capacity":4,"hourly_rate_cents":2000}')
+CHARLIE_ROOM_ID=$(echo "$CHARLIE_ROOM" | python3 -c "import sys,json; print(json.load(sys.stdin)['id'])")
+# Alice (testorg admin) exports with Charlie's room_id
+curl -s "$BASE/admin/export?include_all=true&room_id=$CHARLIE_ROOM_ID" \
+  -H "Authorization: Bearer $ALICE_TOKEN"
+# Expected: CSV with HEADER ONLY (no data rows) — cross-org room behaves as non-existent
+
+# ======================================================================
+# RULE 1 — Datetime ISO 8601 response format
+# ======================================================================
+
+## TC-62: All response datetimes are UTC with explicit designator (+00:00)
+curl -s "$BASE/bookings?limit=1" -H "Authorization: Bearer $ALICE_TOKEN" | python3 -c "
+import sys,json
+items = json.load(sys.stdin)['items']
+if items:
+    b = items[0]
+    for field in ['start_time','end_time','created_at']:
+        val = b[field]
+        print(f'{field}: {val}')
+        assert '+00:00' in val or val.endswith('Z'), f'Field {field} missing UTC designator: {val}'
+print('PASS: All datetimes have UTC designator')
+"
+# Expected: Fields show +00:00 or Z suffix
+
+# ======================================================================
+# SUMMARY OF ALL BUSINESS RULES COVERED
+# ======================================================================
+# Rule 1:  TC-27, TC-62  (Datetime UTC conversion & response format)
+# Rule 2:  TC-20..TC-26  (Booking price, duration, future check)
+# Rule 3:  TC-28, TC-29  (No double-booking, back-to-back allowed)
+# Rule 4:  TC-30..TC-32  (Member quota, admin exemption)
+# Rule 5:  TC-33        (Rate limiting)
+# Rule 6:  TC-43..TC-50  (Cancellation, refund tiers, RefundLog)
+# Rule 7:  TC-34        (Reference code uniqueness)
+# Rule 8:  TC-06..TC-14  (Auth: login, logout, refresh, single-use)
+# Rule 9:  TC-15..TC-19, TC-26, TC-42, TC-49, TC-52, TC-54, TC-61  (Multi-tenancy)
+# Rule 10: TC-39..TC-42, TC-48  (Booking visibility)
+# Rule 11: TC-35..TC-38  (Pagination & ordering)
+# Rule 12: TC-55..TC-57  (Usage report)
+# Rule 13: TC-51, TC-52  (Availability)
+# Rule 14: TC-53, TC-54  (Room stats)
+# Rule 15: TC-02..TC-05  (Registration)
+# Rule 16: TC-01        (Liveness)
