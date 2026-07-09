@@ -165,7 +165,6 @@ def get_booking(
         raise AppError(404, "BOOKING_NOT_FOUND", "Booking not found")
 
     response = serialize_booking(booking)
-    response["start_time"] = iso_utc(booking.created_at)
     response["refunds"] = [
         {
             "amount_cents": r.amount_cents,
