@@ -634,6 +634,30 @@ invalidation is silently discarded instead of caching stale data.
 
 ---
 
+## 33. `reference_code` has no storage-level uniqueness constraint — **Easy**
+
+**File:** `app/models.py:55` (pre-fix)
+
+**Bug:** `Booking.reference_code` was declared `Column(String, nullable=False,
+index=True)` — indexed for lookup speed, but not `unique=True`. Bug #17 makes
+the application layer generate unique codes under a lock, but nothing at the
+storage layer enforced this: if that in-process guarantee were ever bypassed
+(e.g. a second app instance, a direct DB write, a future refactor of
+`next_reference_code`), duplicate reference codes could be inserted with no
+error. Violates Rule 7 ("Every booking's reference code is unique") as a
+defense-in-depth gap, not an observed runtime failure.
+
+**Fix:** `Column(String, unique=True, nullable=False, index=True)`. Note:
+SQLAlchemy's `create_all` never alters an existing table, so this constraint
+is only applied to a freshly created database — a deployment reusing an old
+`cowork.db` file/volume across rebuilds won't retroactively gain it.
+
+**Verified:** Existing `pytest tests/` suite (46 tests, including the
+concurrent reference-code-uniqueness test from #17) still passes with the
+constraint in place.
+
+---
+
 ## Fixes summary
 
 | # | Bug | Difficulty |
@@ -670,7 +694,8 @@ invalidation is silently discarded instead of caching stale data.
 | 30 | Concurrent duplicate registration crashes with 500 instead of 409 | Hard |
 | 31 | Refresh-token single-use check not atomic (replayable) | Hard |
 | 32 | Report/availability cache lost-invalidation race | Hard |
+| 33 | `reference_code` missing storage-level uniqueness constraint | Easy |
 
-**Total: 32 bugs fixed** (7 Easy, 9 Medium, 16 Hard)
+**Total: 33 bugs fixed** (8 Easy, 9 Medium, 16 Hard)
 
 
