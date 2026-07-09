@@ -386,6 +386,38 @@ resource IDs behave as non-existent."
 
 ---
 
+## 22. Datetime UTC offsets dropped instead of converted — **Medium**
+
+**File:** `app/timeutils.py`
+
+**Bug:** `parse_input_datetime` did `dt.replace(tzinfo=None)` for offset-aware
+inputs, which strips the timezone **without converting the wall-clock time**.
+An input like `2026-01-01T12:00:00+02:00` was stored as naive `12:00` instead
+of the correct `10:00` UTC. Violates Rule 1 ("Input datetimes carrying a UTC
+offset are converted to UTC before storage or comparison"). This also skews
+overlap/quota/availability comparisons for any client that sends an offset.
+
+**Fix:** Convert to UTC before dropping the tzinfo:
+`dt = dt.astimezone(timezone.utc).replace(tzinfo=None)`.
+
+---
+
+## 23. Usage-report cache not invalidated on booking creation — **Easy**
+
+**File:** `app/routers/bookings.py` (`create_booking`)
+
+**Bug:** `create_booking` invalidated only the availability cache
+(`cache.invalidate_availability`), not the usage-report cache. A previously
+cached `GET /admin/usage-report` covering the new booking's date range kept
+returning stale numbers after a booking was created. Violates Rule 12 ("The
+report reflects the current state immediately"). This is the create-side
+counterpart of bug #15 (cancel-side availability cache).
+
+**Fix:** Added `cache.invalidate_report(user.org_id)` after a successful
+create, mirroring the invalidation already done on the cancel path.
+
+---
+
 ## Score summary
 
 | # | Bug | Difficulty | Points |
@@ -411,8 +443,10 @@ resource IDs behave as non-existent."
 | 19 | Stats lost-update race | Hard | 10 |
 | 20 | Notification lock-ordering deadlock | Hard | 10 |
 | 21 | Admin export cross-org leak | Hard | 10 |
+| 22 | Datetime UTC offset dropped, not converted | Medium | 5 |
+| 23 | Create doesn't invalidate usage-report cache | Easy | 3 |
 
-**Total: 138 points** (5 Easy × 3 = 15, 6 Medium × 5 = 30, 10 Hard × 10 = 100)
+**Total: 146 points** (6 Easy × 3 = 18, 7 Medium × 5 = 35, 10 Hard × 10 = 100)
 
 ---
 
