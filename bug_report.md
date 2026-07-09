@@ -417,6 +417,39 @@ all still return `401`; a real access token still returns `200`. Existing
 
 ---
 
+## 23. `parse_input_datetime` doesn't convert timezone offset to UTC — **Medium**
+
+**File:** `app/timeutils.py:11–13`
+
+**Bug:** `parse_input_datetime` called `dt.replace(tzinfo=None)` which strips the
+timezone without converting to UTC first. An input like `"2024-01-01T10:00:00+05:00"`
+(which is 05:00 UTC) was stored as `10:00` (naive) — 5 hours off. This corrupted
+every downstream comparison: the future-time check, overlap detection, and quota
+window calculation. Violates Rule 1 ("Input datetimes carrying a UTC offset must
+be converted to UTC before storage or comparison").
+
+**Fix:** Changed to `dt.astimezone(timezone.utc).replace(tzinfo=None)` — converts to
+UTC first, then strips the tzinfo marker for naive storage.
+
+---
+
+## 24. Missing `cache.invalidate_report` in `create_booking` — **Medium**
+
+**File:** `app/routers/bookings.py:127–129`
+
+**Bug:** `create_booking` called `cache.invalidate_availability(...)` after
+inserting a booking but never called `cache.invalidate_report(...)`. A newly
+created confirmed booking was invisible to `GET /admin/usage-report` if a cached
+report for that range already existed. `cancel_booking` invalidated the report
+cache on every cancellation, but `create_booking` was missing the same call —
+an asymmetric cache-staleness bug. Violates Rule 12 ("Must reflect the current
+state immediately").
+
+**Fix:** Added `cache.invalidate_report(user.org_id)` alongside the existing
+`cache.invalidate_availability(...)` call in `create_booking`.
+
+---
+
 ## Score summary
 
 | # | Bug | Difficulty | Points |
@@ -443,8 +476,10 @@ all still return `401`; a real access token still returns `200`. Existing
 | 20 | Notification lock-ordering deadlock | Hard | 10 |
 | 21 | Admin export cross-org leak | Hard | 10 |
 | 22 | No Swagger Authorize button (bearer not declared as OpenAPI security scheme) | Easy | 3 |
+| 23 | `parse_input_datetime` doesn't convert timezone offset to UTC | Medium | 5 |
+| 24 | Missing `cache.invalidate_report` in `create_booking` | Medium | 5 |
 
-**Total: 141 points** (6 Easy × 3 = 18, 6 Medium × 5 = 30, 10 Hard × 10 = 100)
+**Total: 151 points** (6 Easy × 3 = 18, 8 Medium × 5 = 40, 10 Hard × 10 = 100)
 
 ---
 
