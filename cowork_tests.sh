@@ -52,9 +52,22 @@ exp()  { printf '  EXPECT : %s\n' "$*"; }
 act()  { printf '  ACTUAL : %s  %s\n' "$CODE" "$BODY"; }
 
 # ---- live time anchors (UTC) ------------------------------------------------
-# GNU date (bundled with Git Bash) understands -d "+N hours"
-iso() { date -u -d "$1" +%Y-%m-%dT%H:%M:%SZ; }              # e.g. iso "+3 hours"
-day() { date -u -d "$1" +%Y-%m-%d; }                        # e.g. day "+5 days"
+# Portable: compute with python (works on GNU date, BSD/macOS date, anywhere).
+# Accepts specs like: "now", "+2 hours", "-1 hours", "+5 days",
+#                     "+3 hours +30 minutes", "+90 seconds".
+_shift() { "$PY" -c "
+import datetime,re,sys
+now=datetime.datetime.now(datetime.timezone.utc)
+spec=sys.argv[1].strip()
+for sign,num,unit in re.findall(r'([+-])\s*(\d+)\s*(day|hour|minute|second)s?', spec):
+    n=int(num)*(1 if sign=='+' else -1)
+    now+=datetime.timedelta(**{unit+'s':n})
+print(now.strftime(sys.argv[2]))
+" "$1" "$2"; }
+iso() { _shift "$1" '%Y-%m-%dT%H:%M:%SZ'; }                 # e.g. iso "+3 hours"
+day() { _shift "$1" '%Y-%m-%d'; }                           # e.g. day "+5 days"
+# naive (no designator) UTC wall-clock digits, used for offset-input tests
+iso_naive() { _shift "$1" '%Y-%m-%dT%H:%M:%S'; }
 
 T_2H=$(iso "+2 hours");  T_3H=$(iso "+3 hours")
 T_24H=$(iso "+24 hours"); T_25H=$(iso "+25 hours")
@@ -667,7 +680,7 @@ act
 tc "TC-BOOK-31" "Offset input that makes start past -> 400"
 exp '400  INVALID_BOOKING_WINDOW  (compared in UTC)'
 # now+2h expressed in +06:00 but shifted to be in the past: use an absolute past instant with offset
-call POST /bookings "{\"room_id\":$R2,\"start_time\":\"$(date -u -d '-3 hours' +%Y-%m-%dT%H:%M:%S)+06:00\",\"end_time\":\"$(date -u -d '-2 hours' +%Y-%m-%dT%H:%M:%S)+06:00\"}" "$CAROL"
+call POST /bookings "{\"room_id\":$R2,\"start_time\":\"$(iso_naive '-3 hours')+06:00\",\"end_time\":\"$(iso_naive '-2 hours')+06:00\"}" "$CAROL"
 act
 
 tc "TC-BOOK-32" "Nonexistent room -> 404 ROOM_NOT_FOUND"
