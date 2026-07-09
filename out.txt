@@ -1,0 +1,1275 @@
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+BASE=http://localhost:8000   now(UTC)=
+
+[1;36m== SETUP: register users, login, capture tokens, create rooms ==[0m
+
+[1;33m[TC-REG-01][0m New org 'acme' -> alice becomes admin
+  EXPECT : 201  {"user_id":1,"org_id":1,"username":"alice","role":"admin"}  (no password echoed)
+  ACTUAL : 201  {"user_id":1,"org_id":1,"username":"alice","role":"admin"}
+
+[1;33m[TC-REG-02][0m Known org 'acme' -> bob becomes member (same org_id)
+  EXPECT : 201  role=="member", org_id==1
+  ACTUAL : 201  {"user_id":2,"org_id":1,"username":"bob","role":"member"}
+
+[1;33m[SETUP][0m carol joins acme as member
+  EXPECT : 201  role=="member"
+  ACTUAL : 201  {"user_id":3,"org_id":1,"username":"carol","role":"member"}
+
+[1;33m[TC-REG-03][0m Unknown org 'globex' -> dave becomes admin (new org_id != 1)
+  EXPECT : 201  role=="admin", org_id==2
+  ACTUAL : 201  {"user_id":4,"org_id":2,"username":"dave","role":"admin"}
+
+[1;33m[TC-REG-04][0m username 'alice' in globex (already exists) -> member, no conflict
+  EXPECT : 201  role=="member", org_id==2
+  ACTUAL : 201  {"user_id":5,"org_id":2,"username":"alice","role":"member"}
+
+[1;33m[TC-REG-05][0m Duplicate 'alice' in acme -> 409 USERNAME_TAKEN
+  EXPECT : 409  {"detail":"...","code":"USERNAME_TAKEN"}
+  ACTUAL : 409  {"detail":"Username already taken in this organization","code":"USERNAME_TAKEN"}
+
+[1;33m[TC-REG-06][0m Register 'Acme' (capital) — org-name case sensitivity
+  EXPECT : implementation-defined: 201 new admin (case-sensitive) OR 409 (normalized). DOCUMENT actual.
+  ACTUAL : 201  {"user_id":6,"org_id":3,"username":"z","role":"admin"}
+
+[1;33m[TC-REG-07][0m Missing password -> 422
+  EXPECT : 422 (FastAPI validation shape)
+  ACTUAL : 422  {"detail":[{"type":"missing","loc":["body","password"],"msg":"Field required","input":{"org_name":"acme","username":"nopass"}}]}
+
+[1;33m[TC-REG-08][0m Empty username & password
+  EXPECT : 422 if min-length enforced, else 201. DOCUMENT actual.
+  ACTUAL : 201  {"user_id":7,"org_id":1,"username":"","role":"member"}
+
+[1;33m[TC-REG-09][0m Wrong types -> 422
+  EXPECT : 422
+  ACTUAL : 422  {"detail":[{"type":"string_type","loc":["body","org_name"],"msg":"Input should be a valid string","input":123},{"type":"string_type","loc":["body","username"],"msg":"Input should be a valid string","input":["a"]},{"type":"string_type","loc":["body","password"],"msg":"Input should be a valid string","input":true}]}
+
+[1;33m[TC-REG-10][0m Malformed/truncated JSON body -> 422
+  EXPECT : 422
+  ACTUAL : 422  {"detail":[{"type":"json_invalid","loc":["body",19],"msg":"JSON decode error","input":{},"ctx":{"error":"Expecting property name enclosed in double quotes"}}]}
+
+[1;33m[TC-REG-11][0m Unicode username round-trips unchanged (or 422 if capped)
+  EXPECT : 201 with username=="张三" returned unchanged, OR 422 if length-capped
+  ACTUAL : 201  {"user_id":8,"org_id":1,"username":"张三","role":"member"}
+Tokens captured: ALICE/BOB/CAROL/DAVE (+ refresh tokens)
+
+[1;33m[TC-ROOM-01][0m Admin alice creates room R1 (cap 4, rate 10000)
+  EXPECT : 201  {"id":1,"org_id":1,"name":"R1","capacity":4,"hourly_rate_cents":10000}
+  ACTUAL : 201  {"id":1,"org_id":1,"name":"R1","capacity":4,"hourly_rate_cents":10000}
+
+[1;33m[SETUP][0m alice creates room R2 (cap 2, rate 12345) for rounding tests
+  EXPECT : 201  hourly_rate_cents==12345
+  ACTUAL : 201  {"id":2,"org_id":1,"name":"R2","capacity":2,"hourly_rate_cents":12345}
+
+[1;33m[SETUP][0m dave creates room G1 in globex (for cross-tenant tests)
+  EXPECT : 201  org_id==2
+  ACTUAL : 201  {"id":3,"org_id":2,"name":"G1","capacity":3,"hourly_rate_cents":9000}
+R1=1  R2=2  G1=3
+
+[1;36m== A. HEALTH ==[0m
+
+[1;33m[TC-HLTH-01][0m GET /health (no auth)
+  EXPECT : 200  {"status":"ok"}
+  ACTUAL : 200  {"status":"ok"}
+
+[1;33m[TC-HLTH-02][0m GET /health ignores bogus auth header
+  EXPECT : 200  {"status":"ok"}
+  ACTUAL : 200  {"status":"ok"}
+
+[1;36m== C. LOGIN ==[0m
+
+[1;33m[TC-LOG-01][0m Valid login
+  EXPECT : 200  {access_token:<jwt>, refresh_token:<jwt>, token_type:"bearer"}
+  ACTUAL : 200  {"access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwib3JnIjoxLCJyb2xlIjoiYWRtaW4iLCJqdGkiOiJkZjIxOGY4MzJmZGI0MTMyYjU1ZGY0OWEzYTM2MjVmMCIsImlhdCI6MTc4MzYxMTQxNCwiZXhwIjoxNzgzNjEyMzE0LCJ0eXBlIjoiYWNjZXNzIn0.4tn69uzik5ZBCpTcbCqQSskSjqXUZrdyvxGntMS3m4k","refresh_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwib3JnIjoxLCJyb2xlIjoiYWRtaW4iLCJqdGkiOiIxODk4ZWY3OTdmZjA0YjNkOTg1Nzg3N2NlMWM4YzY2ZiIsImlhdCI6MTc4MzYxMTQxNCwiZXhwIjoxNzg0MjE2MjE0LCJ0eXBlIjoicmVmcmVzaCJ9.6dYtkagUqLrc6A9K2KH_LXgryCSjyGSiPlMdAE6pN4w","token_type":"bearer"}
+
+[1;33m[TC-LOG-02][0m Wrong password -> 401 INVALID_CREDENTIALS
+  EXPECT : 401  code=="INVALID_CREDENTIALS"
+  ACTUAL : 401  {"detail":"Invalid username or password","code":"INVALID_CREDENTIALS"}
+
+[1;33m[TC-LOG-03][0m Unknown username -> 401 (not 404, no existence leak)
+  EXPECT : 401  INVALID_CREDENTIALS
+  ACTUAL : 401  {"detail":"Invalid username or password","code":"INVALID_CREDENTIALS"}
+
+[1;33m[TC-LOG-04][0m Right user, wrong org's password -> 401 (org is part of cred check)
+  EXPECT : 401  INVALID_CREDENTIALS  (acme-alice pass is pass123; globex-alice pass is x)
+  ACTUAL : 401  {"detail":"Invalid username or password","code":"INVALID_CREDENTIALS"}
+
+[1;33m[TC-LOG-05][0m Unknown org -> 401 (not creation, not 404)
+  EXPECT : 401  INVALID_CREDENTIALS
+  ACTUAL : 401  {"detail":"Invalid username or password","code":"INVALID_CREDENTIALS"}
+
+[1;33m[TC-LOG-06][0m JWT access-token claims (decode, no verify)
+  EXPECT : sub==user-id-as-STRING, org set, role set, jti present, type=="access", exp-iat==900
+  DECODED: {'sub': '1', 'org': 1, 'role': 'admin', 'jti': 'f46790be9c4d44aaa48507bb9c4777fd', 'type': 'access'} exp-iat= 900
+  CHECK  : sub is str True | exp-iat==900 True
+
+[1;33m[TC-LOG-07][0m JWT refresh-token lifetime: type=='refresh', exp-iat==604800
+  EXPECT : type=="refresh", exp-iat==604800 (7 days)
+  DECODED: type= refresh exp-iat= 604800
+
+[1;33m[TC-LOG-08][0m jti unique across two logins
+  EXPECT : two access tokens have different jti
+  jti1= e77ca653 jti2= 42e3dafd | distinct: True
+
+[1;33m[TC-LOG-09][0m Missing password -> 422
+  EXPECT : 422
+  ACTUAL : 422  {"detail":[{"type":"missing","loc":["body","password"],"msg":"Field required","input":{"org_name":"acme","username":"alice"}}]}
+
+[1;36m== D. REFRESH (Rule 8: rotates, single-use) ==[0m
+
+[1;33m[TC-REF-01][0m Valid refresh rotates -> new access AND new refresh
+  EXPECT : 200  new access+refresh, both differ from inputs
+  ACTUAL : 200  {"access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyIiwib3JnIjoxLCJyb2xlIjoibWVtYmVyIiwianRpIjoiZDJlZWUyNWYyZWU5NDZiZjhiNDdlMWUwMDJjZTY5ODQiLCJpYXQiOjE3ODM2MTE0MTUsImV4cCI6MTc4MzYxMjMxNSwidHlwZSI6ImFjY2VzcyJ9.zkzNXJ9LQmyEacZF3WW6lVVsIxEhKG8V35Y_L2DNg7k","refresh_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyIiwib3JnIjoxLCJyb2xlIjoibWVtYmVyIiwianRpIjoiMjUzYWZmZTM4OWYwNGM2N2E2NWJkMjgwZmJhNmQ3ZDEiLCJpYXQiOjE3ODM2MTE0MTUsImV4cCI6MTc4NDIxNjIxNSwidHlwZSI6InJlZnJlc2gifQ.qXGL0Is8vKkMXecHzwDgO8W19rET5poOKpDFUz5CWco","token_type":"bearer"}
+
+[1;33m[TC-REF-02][0m Reuse OLD refresh token -> 401 (single-use)
+  EXPECT : 401  (blacklisted/rotated)
+  ACTUAL : 401  {"detail":"Token has been revoked","code":"UNAUTHORIZED"}
+
+[1;33m[TC-REF-03][0m New (rotated) refresh token works -> 200
+  EXPECT : 200  rotation chain intact
+  ACTUAL : 200  {"access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyIiwib3JnIjoxLCJyb2xlIjoibWVtYmVyIiwianRpIjoiM2YyNzE2NjdjOTJhNDdhYjgyMjNhY2VlMGNiNzU2MmYiLCJpYXQiOjE3ODM2MTE0MTUsImV4cCI6MTc4MzYxMjMxNSwidHlwZSI6ImFjY2VzcyJ9.gvfu59zrHHjWJ70Rbg_8JGEXL3bCFE4saSq-SpDHUMM","refresh_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyIiwib3JnIjoxLCJyb2xlIjoibWVtYmVyIiwianRpIjoiZDM5YWJhYzIxZTFhNDRiNmJkNDcxYmQzNjEwOWU3ZmIiLCJpYXQiOjE3ODM2MTE0MTUsImV4cCI6MTc4NDIxNjIxNSwidHlwZSI6InJlZnJlc2gifQ.AzzjnGCJnTOkmtLDX_HqydQwKVGswKzQe5q1gVed3vE","token_type":"bearer"}
+
+[1;33m[TC-REF-04][0m Access token given to refresh -> 401 (must reject type:access)
+  EXPECT : 401
+  ACTUAL : 401  {"detail":"Wrong token type","code":"UNAUTHORIZED"}
+
+[1;33m[TC-REF-05][0m Garbage token -> 401
+  EXPECT : 401
+  ACTUAL : 401  {"detail":"Invalid or expired token","code":"UNAUTHORIZED"}
+
+[1;33m[TC-REF-06][0m Missing field -> 422
+  EXPECT : 422
+  ACTUAL : 422  {"detail":[{"type":"missing","loc":["body","refresh_token"],"msg":"Field required","input":{}}]}
+
+[1;33m[TC-REF-07][0m Refresh needs NO Authorization header -> 200 (body-based auth)
+  EXPECT : 200  (already demonstrated: no Bearer header sent above)
+  ACTUAL : 200  {"access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIzIiwib3JnIjoxLCJyb2xlIjoibWVtYmVyIiwianRpIjoiYThjMmNiOWU3YWUyNGVlODg2ZWE3MjY0M2RhYzNhMGIiLCJpYXQiOjE3ODM2MTE0MTUsImV4cCI6MTc4MzYxMjMxNSwidHlwZSI6ImFjY2VzcyJ9.NFZVvI23tnQy8xPofMv7OEixmMRBXNfmRtxF-Aktql4","refresh_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIzIiwib3JnIjoxLCJyb2xlIjoibWVtYmVyIiwianRpIjoiOTI5NDFlYTE1YzQxNGUwOWE3MTNjMDc1NjU0N2M4ZTMiLCJpYXQiOjE3ODM2MTE0MTUsImV4cCI6MTc4NDIxNjIxNSwidHlwZSI6InJlZnJlc2gifQ.0kHZQyPPsRp0akB4tlQADh_lYJ-QFOaH5lWO7ANc3Mk","token_type":"bearer"}
+
+[1;36m== E. LOGOUT & token invalidation (Rule 8) ==[0m
+
+[1;33m[TC-OUT-01][0m Logout succeeds
+  EXPECT : 2xx (200/204)
+  ACTUAL : 200  {"status":"ok"}
+
+[1;33m[TC-OUT-02][0m Reuse logged-out access token on GET /rooms -> 401
+  EXPECT : 401 (blacklisted)
+  ACTUAL : 401  {"detail":"Token has been revoked","code":"UNAUTHORIZED"}
+
+[1;33m[TC-OUT-03][0m Refresh token still valid after logout -> 200
+  EXPECT : 200 (logout kills only the access token)
+  ACTUAL : 200  {"access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIzIiwib3JnIjoxLCJyb2xlIjoibWVtYmVyIiwianRpIjoiMTIyMzNjZTk5Zjc0NDE1YzlkYWRkMmNkNzY3MzNlNzMiLCJpYXQiOjE3ODM2MTE0MTUsImV4cCI6MTc4MzYxMjMxNSwidHlwZSI6ImFjY2VzcyJ9.07cSW4rxwUoX-8JZN8ACCSYnTGZ4ZI0gR1Ixe2n7AKo","refresh_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIzIiwib3JnIjoxLCJyb2xlIjoibWVtYmVyIiwianRpIjoiOTM2MzZjYmE1NjIzNGFlYjlmZjM4NTUwNmVkZWM0ZGMiLCJpYXQiOjE3ODM2MTE0MTUsImV4cCI6MTc4NDIxNjIxNSwidHlwZSI6InJlZnJlc2gifQ.rDirQWZ3sh6ZmG9wAOy75gnSdF1aQKJiSlS1GqoSuuo","token_type":"bearer"}
+
+[1;33m[TC-OUT-04][0m Logout with no token -> 401
+  EXPECT : 401
+  ACTUAL : 401  {"detail":"Missing bearer token","code":"UNAUTHORIZED"}
+
+[1;33m[TC-AUTH-01][0m Malformed Authorization header ('Bearer' only) -> 401
+  EXPECT : 401
+  ACTUAL : 401
+  EXPECT : 401 (token without Bearer scheme)
+  ACTUAL : 401
+
+[1;33m[TC-AUTH-02][0m Tampered signature -> 401
+  EXPECT : 401
+  ACTUAL : 401  {"detail":"Invalid or expired token","code":"UNAUTHORIZED"}
+
+[1;33m[TC-AUTH-03][0m Expired access token -> 401 (mint one with exp in the past)
+  EXPECT : 401
+  ACTUAL : 401  {"detail":"Invalid or expired token","code":"UNAUTHORIZED"}
+
+[1;33m[TC-AUTH-04][0m Refresh token used as Bearer on GET /rooms -> 401
+  EXPECT : 401 (endpoint requires type:access)
+  ACTUAL : 401  {"detail":"Wrong token type","code":"UNAUTHORIZED"}
+
+[1;36m== F. ROOMS — list & create ==[0m
+
+[1;33m[TC-ROOM-02][0m Member bob creates room -> 403 FORBIDDEN
+  EXPECT : 403  code=="FORBIDDEN"
+  ACTUAL : 403  {"detail":"Admin privileges required","code":"FORBIDDEN"}
+
+[1;33m[TC-ROOM-03][0m GET /rooms as bob (acme) -> only acme rooms, G1 absent
+  EXPECT : 200  contains R1,R2 ; does NOT contain G1
+  ACTUAL : 200  [{"id":1,"org_id":1,"name":"R1","capacity":4,"hourly_rate_cents":10000},{"id":2,"org_id":1,"name":"R2","capacity":2,"hourly_rate_cents":12345}]
+
+[1;33m[TC-ROOM-04][0m GET /rooms as dave (globex) -> only globex rooms (G1), never R1/R2
+  EXPECT : 200  contains G1 only
+  ACTUAL : 200  [{"id":3,"org_id":2,"name":"G1","capacity":3,"hourly_rate_cents":9000}]
+
+[1;33m[TC-ROOM-05][0m Create room unauthenticated -> 401
+  EXPECT : 401
+  ACTUAL : 401  {"detail":"Missing bearer token","code":"UNAUTHORIZED"}
+
+[1;33m[TC-ROOM-06][0m Missing fields -> 422
+  EXPECT : 422
+  ACTUAL : 422  {"detail":[{"type":"missing","loc":["body","capacity"],"msg":"Field required","input":{"name":"NoRate"}},{"type":"missing","loc":["body","hourly_rate_cents"],"msg":"Field required","input":{"name":"NoRate"}}]}
+
+[1;33m[TC-ROOM-07][0m Negative capacity/rate
+  EXPECT : 422 if schema constrains >=0, else 201 stored as-is. DOCUMENT (affects pricing).
+  ACTUAL : 201  {"id":4,"org_id":1,"name":"Weird","capacity":-1,"hourly_rate_cents":-100}
+
+[1;33m[TC-ROOM-08][0m Wrong types -> 422
+  EXPECT : 422
+  ACTUAL : 422  {"detail":[{"type":"string_type","loc":["body","name"],"msg":"Input should be a valid string","input":5},{"type":"int_parsing","loc":["body","capacity"],"msg":"Input should be a valid integer, unable to parse string as an integer","input":"four"}]}
+
+[1;36m== G. AVAILABILITY (Rule 13) — isolated on room AV ==[0m
+  (dedicated availability room AV=5, calendar day=)
+
+[1;33m[TC-AVAIL-01][0m Empty day
+  EXPECT : 200  {"room_id":5,"date":"","busy":[]}
+  ACTUAL : 400  {"detail":"Invalid date","code":"INVALID_BOOKING_WINDOW"}
+
+[1;33m[TC-AVAIL-02][0m Two confirmed bookings same day -> busy sorted ascending by start
+  EXPECT : busy = [09:00-10:00, 14:00-15:00] on the day (ascending). times are +00:00.
+  ACTUAL : 400  {"detail":"Invalid date","code":"INVALID_BOOKING_WINDOW"}
+
+[1;33m[TC-AVAIL-03][0m Cancel one booking -> disappears from busy immediately
+  EXPECT : busy = [14:00-15:00] only (09:00 slot gone)
+  ACTUAL : 400  {"detail":"Invalid date","code":"INVALID_BOOKING_WINDOW"}
+
+[1;33m[TC-AVAIL-04][0m 'Starting on date' boundary: booking 23:00->next 00:00 shows on start day only
+  EXPECT : appears for date=, NOT for date=
+   [ ] 400 {"detail":"Invalid date","code":"INVALID_BOOKING_WINDOW"}
+   [] 400 {"detail":"Invalid date","code":"INVALID_BOOKING_WINDOW"}
+
+[1;33m[TC-AVAIL-05][0m Offset input maps to correct UTC date
+  EXPECT : start 02:00+06:00 on  == 20:00Z on  -> appears under 
+   create: 400 {"detail":"start_time/end_time must be valid ISO 8601 datetimes","code":"INVALID_BOOKING_WINDOW"}
+   [ busy should include 20:00-21:00] {"detail":"Invalid date","code":"INVALID_BOOKING_WINDOW"}
+
+[1;33m[TC-AVAIL-06][0m Nonexistent room -> 404 ROOM_NOT_FOUND
+  EXPECT : 404  ROOM_NOT_FOUND
+  ACTUAL : 404  {"detail":"Room not found","code":"ROOM_NOT_FOUND"}
+
+[1;33m[TC-AVAIL-07][0m Cross-org room G1 as bob -> 404 ROOM_NOT_FOUND
+  EXPECT : 404  ROOM_NOT_FOUND (cross-org == nonexistent)
+  ACTUAL : 404  {"detail":"Room not found","code":"ROOM_NOT_FOUND"}
+
+[1;33m[TC-AVAIL-08][0m Missing / invalid date -> 422 (or 400)
+  EXPECT : 422 (or 400 — verify)
+   [missing]  422 {"detail":[{"type":"missing","loc":["query","date"],"msg":"Field required","input":null}]}
+   [garbage]  400 {"detail":"Invalid date","code":"INVALID_BOOKING_WINDOW"}
+
+[1;36m== H. ROOM STATS (Rule 14) — isolated on room ST ==[0m
+
+[1;33m[TC-STAT-01][0m Fresh room stats
+  EXPECT : 200  {"room_id":6,"total_confirmed_bookings":0,"total_revenue_cents":0}
+  ACTUAL : 200  {"room_id":6,"total_confirmed_bookings":0,"total_revenue_cents":0}
+
+[1;33m[TC-STAT-02][0m After 2 confirmed bookings (2h each @10000 = 20000 each)
+  EXPECT : {"total_confirmed_bookings":2,"total_revenue_cents":40000}
+  ACTUAL : 200  {"room_id":6,"total_confirmed_bookings":0,"total_revenue_cents":0}
+
+[1;33m[TC-STAT-03][0m Cancel one -> stats drop immediately
+  EXPECT : {"total_confirmed_bookings":1,"total_revenue_cents":20000}
+  ACTUAL : 200  {"room_id":6,"total_confirmed_bookings":0,"total_revenue_cents":0}
+
+[1;33m[TC-STAT-04][0m Nonexistent / cross-org room -> 404
+  EXPECT : 404 ROOM_NOT_FOUND (both)
+   [99999] 404 {"detail":"Room not found","code":"ROOM_NOT_FOUND"}
+   [G1  ]  404 {"detail":"Room not found","code":"ROOM_NOT_FOUND"}
+
+[1;36m== I. CREATE BOOKING (Rules 2-5,7) — isolated on room BK ==[0m
+
+[1;33m[TC-BOOK-01][0m Happy path 1h booking (+2h..+3h) -> price 10000, confirmed
+  EXPECT : 201  status=="confirmed", price_cents==10000, reference_code present, datetimes +00:00
+  ACTUAL : 400  {"detail":"start_time/end_time must be valid ISO 8601 datetimes","code":"INVALID_BOOKING_WINDOW"}
+
+[1;33m[TC-BOOK-02][0m Max duration 8h OK -> price 80000
+  EXPECT : 201  price_cents==80000
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+  ACTUAL : 400  {"detail":"start_time/end_time must be valid ISO 8601 datetimes","code":"INVALID_BOOKING_WINDOW"}
+
+[1;33m[TC-BOOK-03][0m Duration 9h -> 400 INVALID_BOOKING_WINDOW
+  EXPECT : 400  INVALID_BOOKING_WINDOW
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+  ACTUAL : 400  {"detail":"start_time/end_time must be valid ISO 8601 datetimes","code":"INVALID_BOOKING_WINDOW"}
+
+[1;33m[TC-BOOK-04][0m Fractional 90 min -> 400
+  EXPECT : 400  INVALID_BOOKING_WINDOW
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+  ACTUAL : 400  {"detail":"start_time/end_time must be valid ISO 8601 datetimes","code":"INVALID_BOOKING_WINDOW"}
+
+[1;33m[TC-BOOK-05][0m 30-minute duration -> 400
+  EXPECT : 400  INVALID_BOOKING_WINDOW
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+  ACTUAL : 400  {"detail":"start_time/end_time must be valid ISO 8601 datetimes","code":"INVALID_BOOKING_WINDOW"}
+
+[1;33m[TC-BOOK-06][0m end == start -> 400
+  EXPECT : 400  INVALID_BOOKING_WINDOW
+  ACTUAL : 400  {"detail":"start_time/end_time must be valid ISO 8601 datetimes","code":"INVALID_BOOKING_WINDOW"}
+
+[1;33m[TC-BOOK-07][0m end < start -> 400
+  EXPECT : 400  INVALID_BOOKING_WINDOW
+  ACTUAL : 400  {"detail":"start_time/end_time must be valid ISO 8601 datetimes","code":"INVALID_BOOKING_WINDOW"}
+
+[1;33m[TC-BOOK-08][0m start in the past -> 400
+  EXPECT : 400  INVALID_BOOKING_WINDOW
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+  ACTUAL : 400  {"detail":"start_time/end_time must be valid ISO 8601 datetimes","code":"INVALID_BOOKING_WINDOW"}
+
+[1;33m[TC-BOOK-09][0m start == now (no grace) -> 400
+  EXPECT : 400  INVALID_BOOKING_WINDOW (must be strictly future)
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+  ACTUAL : 400  {"detail":"start_time/end_time must be valid ISO 8601 datetimes","code":"INVALID_BOOKING_WINDOW"}
+
+[1;33m[TC-BOOK-10][0m start a few minutes ahead, 1h duration -> OK
+  EXPECT : 201  success
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+  ACTUAL : 400  {"detail":"start_time/end_time must be valid ISO 8601 datetimes","code":"INVALID_BOOKING_WINDOW"}
+
+[1;33m[TC-BOOK-11][0m Overlap (existing 14-16 style) -> 409 ROOM_CONFLICT
+  EXPECT : 409  ROOM_CONFLICT
+  ACTUAL : 400  {"detail":"start_time/end_time must be valid ISO 8601 datetimes","code":"INVALID_BOOKING_WINDOW"}
+
+[1;33m[TC-BOOK-12][0m Back-to-back (new.start==existing.end) -> OK
+  EXPECT : 201  success (touching boundary is not overlap)
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+  ACTUAL : 400  {"detail":"start_time/end_time must be valid ISO 8601 datetimes","code":"INVALID_BOOKING_WINDOW"}
+
+[1;33m[TC-BOOK-13][0m Reverse back-to-back -> OK
+  EXPECT : 201  success
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+  ACTUAL : 400  {"detail":"start_time/end_time must be valid ISO 8601 datetimes","code":"INVALID_BOOKING_WINDOW"}
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+
+[1;33m[TC-BOOK-14][0m Full containment (existing 2-5, new 3-4) -> 409
+  EXPECT : 409  ROOM_CONFLICT
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+  ACTUAL : 400  {"detail":"start_time/end_time must be valid ISO 8601 datetimes","code":"INVALID_BOOKING_WINDOW"}
+
+[1;33m[TC-BOOK-15][0m New envelops existing (new 1-6 over existing 2-5) -> 409
+  EXPECT : 409  ROOM_CONFLICT
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+  ACTUAL : 400  {"detail":"start_time/end_time must be valid ISO 8601 datetimes","code":"INVALID_BOOKING_WINDOW"}
+
+[1;33m[TC-BOOK-16][0m Overlap only counts CONFIRMED: cancel then rebook same slot -> OK
+  EXPECT : 201  success (cancelled slot is free)
+  ACTUAL : 400  {"detail":"start_time/end_time must be valid ISO 8601 datetimes","code":"INVALID_BOOKING_WINDOW"}
+
+[1;33m[TC-BOOK-17][0m Same slot DIFFERENT room -> OK (conflict is per-room)
+  EXPECT : 201  success
+  ACTUAL : 400  {"detail":"start_time/end_time must be valid ISO 8601 datetimes","code":"INVALID_BOOKING_WINDOW"}
+
+[1;36m==   Quota tests — dedicated member 'quotaguy' & fresh rooms ==[0m
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+
+[1;33m[TC-BOOK-18][0m 4th booking inside 24h window -> 409 QUOTA_EXCEEDED
+  EXPECT : 409  QUOTA_EXCEEDED
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+  ACTUAL : 400  {"detail":"start_time/end_time must be valid ISO 8601 datetimes","code":"INVALID_BOOKING_WINDOW"}
+
+[1;33m[TC-BOOK-19][0m 4th booking OUTSIDE window (start +30h) -> OK
+  EXPECT : 201  success (start beyond now+24h does not count)
+  ACTUAL : 400  {"detail":"start_time/end_time must be valid ISO 8601 datetimes","code":"INVALID_BOOKING_WINDOW"}
+
+[1;33m[TC-BOOK-20][0m Upper bound inclusive: start exactly +24h with 3 in window -> 409
+  EXPECT : 409  QUOTA_EXCEEDED  (window is (now, now+24h] inclusive)
+  ACTUAL : 400  {"detail":"start_time/end_time must be valid ISO 8601 datetimes","code":"INVALID_BOOKING_WINDOW"}
+
+[1;33m[TC-BOOK-21][0m Cancelling frees quota
+  EXPECT : 201  success after cancelling one in-window booking
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+StopIteration
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+  ACTUAL : 400  {"detail":"start_time/end_time must be valid ISO 8601 datetimes","code":"INVALID_BOOKING_WINDOW"}
+
+[1;33m[TC-BOOK-22][0m Quota per-member across all rooms (already spanned Q1..Q3)
+  EXPECT : covered: the 3 that triggered quota spanned different rooms
+  (informational — see TC-BOOK-18)
+
+[1;33m[TC-BOOK-23][0m Other member unaffected by quota
+  EXPECT : 201  carol can still book while quotaguy is at quota
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+  ACTUAL : 400  {"detail":"start_time/end_time must be valid ISO 8601 datetimes","code":"INVALID_BOOKING_WINDOW"}
+
+[1;36m==   Rate-limit tests — dedicated member 'rlguy' ==[0m
+
+[1;33m[TC-BOOK-24 / TC-BOOK-25][0m Fire 20 POSTs, 21st -> 429 RATE_LIMITED (all requests count)
+  EXPECT : requests 1..20: 2xx/4xx (mix ok) ; request 21: 429 RATE_LIMITED
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+400 date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+400 date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+400 date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+400 date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+400 date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+400 date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+400 date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+400 date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+400 date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+400 date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+400 date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+400 date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+400 date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+400 date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+400 date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+400 date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+400 date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+400 date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+400 date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+400   <- first 20 statuses
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+  21st -> ACTUAL: 429 {"detail":"Too many booking requests","code":"RATE_LIMITED"}   (EXPECT 429 RATE_LIMITED)
+
+[1;33m[TC-BOOK-26][0m Rate limit is per-user: carol still succeeds while rlguy limited
+  EXPECT : 2xx (or 409 if slot taken) — NOT 429
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+  ACTUAL : 400  {"detail":"start_time/end_time must be valid ISO 8601 datetimes","code":"INVALID_BOOKING_WINDOW"}
+
+[1;33m[TC-BOOK-27][0m Rate-limit window rolls off after 60s
+  EXPECT : after waiting 60s, a new POST succeeds (2xx). (script does not sleep — run manually)
+  MANUAL: sleep 61 && re-run one POST as rlguy -> expect 2xx
+
+[1;33m[TC-BOOK-28][0m Reference-code uniqueness across N bookings
+  EXPECT : all reference_code distinct
+  distinct refs: True
+
+[1;33m[TC-BOOK-29][0m Offset input normalized to UTC in response
+  EXPECT : start 20:00+06:00 -> response start_time == ...T14:00:00+00:00
+  ACTUAL : 400  {"detail":"start_time/end_time must be valid ISO 8601 datetimes","code":"INVALID_BOOKING_WINDOW"}
+
+[1;33m[TC-BOOK-30][0m Naive datetime treated as UTC (not server-local)
+  EXPECT : response start_time == ...T14:00:00+00:00 (NOT shifted)
+  ACTUAL : 400  {"detail":"start_time/end_time must be valid ISO 8601 datetimes","code":"INVALID_BOOKING_WINDOW"}
+
+[1;33m[TC-BOOK-31][0m Offset input that makes start past -> 400
+  EXPECT : 400  INVALID_BOOKING_WINDOW  (compared in UTC)
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+  ACTUAL : 400  {"detail":"start_time/end_time must be valid ISO 8601 datetimes","code":"INVALID_BOOKING_WINDOW"}
+
+[1;33m[TC-BOOK-32][0m Nonexistent room -> 404 ROOM_NOT_FOUND
+  EXPECT : 404  ROOM_NOT_FOUND
+  ACTUAL : 400  {"detail":"start_time/end_time must be valid ISO 8601 datetimes","code":"INVALID_BOOKING_WINDOW"}
+
+[1;33m[TC-BOOK-33][0m Cross-org room G1 as bob -> 404 ROOM_NOT_FOUND
+  EXPECT : 404  ROOM_NOT_FOUND
+  ACTUAL : 400  {"detail":"start_time/end_time must be valid ISO 8601 datetimes","code":"INVALID_BOOKING_WINDOW"}
+
+[1;33m[TC-BOOK-34][0m Missing fields -> 422
+  EXPECT : 422
+  ACTUAL : 422  {"detail":[{"type":"missing","loc":["body","end_time"],"msg":"Field required","input":{"room_id":7,"start_time":""}}]}
+
+[1;33m[TC-BOOK-35][0m Non-ISO datetime -> 422 (or 400)
+  EXPECT : 422 (schema parse) — or 400, DOCUMENT
+  ACTUAL : 400  {"detail":"start_time/end_time must be valid ISO 8601 datetimes","code":"INVALID_BOOKING_WINDOW"}
+
+[1;33m[TC-BOOK-36][0m Unauthenticated -> 401
+  EXPECT : 401
+  ACTUAL : 401  {"detail":"Missing bearer token","code":"UNAUTHORIZED"}
+
+[1;33m[TC-BOOK-37][0m Validation ordering — one documented code (400 window / 409 conflict)
+  EXPECT : exactly one error; a valid documented code
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+  ACTUAL : 400  {"detail":"start_time/end_time must be valid ISO 8601 datetimes","code":"INVALID_BOOKING_WINDOW"}
+
+[1;36m== J. LIST BOOKINGS (Rule 11) — dedicated member 'listguy' ==[0m
+  Creating bookings for listguy (spaced beyond +24h to dodge quota)...
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+  (created ~15 bookings; rate-limit may cap the batch — check total below)
+
+[1;33m[TC-LIST-01][0m Defaults: page=1 limit=10
+  EXPECT : 200  {items:[..<=10..], page:1, limit:10, total:<int>}
+  ACTUAL : 200  page=1 limit=10 total=0 items=0
+
+[1;33m[TC-LIST-02][0m Ordering: ascending start_time, ties by ascending id
+  EXPECT : items sorted by start_time asc (ties -> id asc)
+  monotonic start_time asc: True
+
+[1;33m[TC-LIST-03][0m Pagination no gaps/dupes across pages
+  EXPECT : concatenated ids across pages == unique set, total constant on every page
+  ids collected:   
+  no dupes: True
+
+[1;33m[TC-LIST-04][0m Page beyond last -> empty items, correct total
+  EXPECT : {items:[], page:99, limit:10, total:<same>}
+  ACTUAL : 200  {"items":[],"page":99,"limit":10,"total":0}
+
+[1;33m[TC-LIST-05][0m limit=100 accepted
+  EXPECT : 200  returns up to 100
+  ACTUAL : 200 limit=100 items=0
+
+[1;33m[TC-LIST-06][0m limit=101 -> clamped to 100 OR 422
+  EXPECT : either 422, or 200 with <=100 items. DOCUMENT.
+  ACTUAL : 422  {"detail":[{"type":"less_than_equal","loc":["query","limit"],"msg":"Input should be less than or equal to 100","input":"101","ctx":{"le":100}}]}
+
+[1;33m[TC-LIST-07][0m page=0 / negative / limit=0 -> 422 or defined behavior
+  EXPECT : 422 if constrained, else defined (no crash, no negative offset). DOCUMENT.
+   [page=0]  422
+   [page=-1] 422
+   [limit=0] 422
+
+[1;33m[TC-LIST-08][0m Visibility: only caller's own bookings
+  EXPECT : listguy's list never contains bob's/carol's booking ids
+  all user_ids belong to caller: True
+
+[1;33m[TC-LIST-09][0m Admin list returns admin's OWN bookings (Rule 11)
+  EXPECT : alice's /bookings shows only alice's bookings (flag if impl differs)
+  ACTUAL : total=0
+
+[1;33m[TC-LIST-10][0m Cancelled bookings still listed with status cancelled
+  EXPECT : a cancelled booking still appears; total includes it
+  has a cancelled row: False
+
+[1;33m[TC-LIST-11][0m Unauthenticated -> 401
+  EXPECT : 401
+  ACTUAL : 401  {"detail":"Missing bearer token","code":"UNAUTHORIZED"}
+
+[1;36m== K. GET BOOKING BY ID (Rules 9,10) ==[0m
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+
+[1;33m[TC-GET-01][0m Owner reads own booking -> full Booking + refunds:[]
+  EXPECT : 200  includes refunds:[] (never cancelled)
+  ACTUAL : 307  
+
+[1;33m[TC-GET-03][0m Member reads ANOTHER member's booking -> 404 BOOKING_NOT_FOUND
+  EXPECT : 404  BOOKING_NOT_FOUND (not 403)
+  ACTUAL : 307  
+
+[1;33m[TC-GET-04][0m Admin reads any booking in own org -> 200
+  EXPECT : 200
+  ACTUAL : 307  
+
+[1;33m[TC-GET-05][0m Nonexistent id -> 404 BOOKING_NOT_FOUND
+  EXPECT : 404  BOOKING_NOT_FOUND
+  ACTUAL : 404  {"detail":"Booking not found","code":"BOOKING_NOT_FOUND"}
+
+[1;33m[TC-GET-06][0m Cross-org booking id as acme admin -> 404
+  EXPECT : 404  BOOKING_NOT_FOUND
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+  ACTUAL : 307  
+
+[1;33m[TC-GET-07][0m Unauthenticated -> 401
+  EXPECT : 401
+  ACTUAL : 307  
+
+[1;33m[TC-GET-02][0m Cancelled booking shows exactly one refund entry
+  EXPECT : refunds:[{amount_cents:10000,status:"processed",processed_at:...}]  (100% tier, +90h notice)
+  ACTUAL : 307  
+
+[1;36m== L. CANCEL BOOKING (Rule 6) — dedicated member & rooms per tier ==[0m
+
+[1;33m[TC-CAN-01][0m 100% refund (notice +72h), price 20000 (2h)
+  EXPECT : 200  {status:"cancelled",refund_percent:100,refund_amount_cents:20000}
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+  ACTUAL : 307  
+
+[1;33m[TC-CAN-02][0m Exactly 48h notice -> 100%
+  EXPECT : refund_percent:100
+  ACTUAL : 307  
+
+[1;33m[TC-CAN-03][0m 50% refund (notice +36h), price 20000 -> 10000
+  EXPECT : {refund_percent:50,refund_amount_cents:10000}
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+  ACTUAL : 307  
+
+[1;33m[TC-CAN-04][0m Exactly 24h notice -> 50%
+  EXPECT : refund_percent:50 (24h boundary belongs to 50% tier)
+  ACTUAL : 307  
+
+[1;33m[TC-CAN-05][0m 0% refund (notice +12h), price 20000 -> 0 (RefundLog still exists, amount 0)
+  EXPECT : {refund_percent:0,refund_amount_cents:0}
+  ACTUAL : 307  
+
+[1;33m[TC-CAN-06][0m Half-cent rounds UP: R rate 12345, 1h, 50% -> 6172.5 -> 6173
+  EXPECT : {refund_percent:50,refund_amount_cents:6173}
+  ACTUAL : 307  
+
+[1;33m[TC-CAN-07][0m Another half-cent: rate 4567, 1h, 50% -> 2283.5 -> 2284
+  EXPECT : {refund_percent:50,refund_amount_cents:2284}
+  ACTUAL : 307  
+
+[1;33m[TC-CAN-08][0m Cancel already-cancelled -> 409 ALREADY_CANCELLED (still one RefundLog)
+  EXPECT : 409  ALREADY_CANCELLED
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+  ACTUAL : 307  
+
+[1;33m[TC-CAN-09][0m Admin cancels member's booking (same org) -> 200
+  EXPECT : 200  refund computed normally
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+  ACTUAL : 307  
+
+[1;33m[TC-CAN-10][0m Member cancels ANOTHER member's booking -> 404
+  EXPECT : 404  BOOKING_NOT_FOUND (visibility rule, not 403)
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+  ACTUAL : 307  
+
+[1;33m[TC-CAN-11][0m Admin of DIFFERENT org cancels acme booking -> 404
+  EXPECT : 404  BOOKING_NOT_FOUND (cross-org)
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+  ACTUAL : 307  
+
+[1;33m[TC-CAN-12][0m Nonexistent booking -> 404
+  EXPECT : 404  BOOKING_NOT_FOUND
+  ACTUAL : 404  {"detail":"Booking not found","code":"BOOKING_NOT_FOUND"}
+
+[1;33m[TC-CAN-15][0m Unauthenticated cancel -> 401
+  EXPECT : 401
+  ACTUAL : 401  {"detail":"Missing bearer token","code":"UNAUTHORIZED"}
+
+[1;33m[TC-CAN-13/14][0m Cancel frees slot & quota; response amount == RefundLog amount
+  EXPECT : covered by TC-BOOK-16 / TC-BOOK-21 and TC-CAN-01..07 (compare cancel amount vs GET refunds[0].amount_cents)
+  (invariant check: cancel response refund_amount_cents == GET /bookings/{id}.refunds[0].amount_cents)
+
+[1;36m== M. USAGE REPORT (Rule 12, admin) ==[0m
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+date: illegal option -- d
+usage: date [-jnRu] [-I[date|hours|minutes|seconds|ns]] [-f input_fmt]
+            [ -z output_zone ] [-r filename|seconds] [-v[+|-]val[y|m|w|d|H|M|S]]
+            [[[[mm]dd]HH]MM[[cc]yy][.SS] | new_date] [+output_fmt]
+
+[1;33m[TC-USE-01][0m Member -> 403 FORBIDDEN
+  EXPECT : 403  FORBIDDEN
+  ACTUAL : 403  {"detail":"Admin privileges required","code":"FORBIDDEN"}
+
+[1;33m[TC-USE-02][0m Includes rooms with zero bookings
+  EXPECT : rooms[] contains every acme room; zero-booking rooms show confirmed_bookings:0, revenue_cents:0
+  ACTUAL : 400  {"detail":"Invalid date range","code":"INVALID_BOOKING_WINDOW"}
+
+[1;33m[TC-USE-03][0m Range boundaries inclusive (start on from and on to both counted)
+  EXPECT : bookings starting exactly at from and at to are included
+  (verify by comparing counts against known bookings on  and )
+
+[1;33m[TC-USE-04][0m Booking starting just outside range excluded
+  EXPECT : start at to+1s or from-1s not counted
+  (informational)
+
+[1;33m[TC-USE-05][0m Only CONFIRMED counted (cancel removes from report immediately)
+  EXPECT : cancelled booking not in counts/revenue
+  (informational — cross-check with TC-STAT-03 style cancel)
+
+[1;33m[TC-USE-06][0m Org scoping: globex rooms never appear for alice
+  EXPECT : rooms[] room_ids all belong to acme
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+KeyError: 'rooms'
+
+[1;33m[TC-USE-07][0m Offset from/to normalized to UTC
+  EXPECT : from=...T06:00:00+06:00 (==00:00Z) compared in UTC
+  ACTUAL : 400  ({"detail":"Invalid date range","code":"INVALID_BOOKING_WINDOW"})
+
+[1;33m[TC-USE-08][0m from > to (empty range) -> all rooms 0, no error/negatives
+  EXPECT : every room confirmed_bookings:0
+  ACTUAL : 400  {"detail":"Invalid date range","code":"INVALID_BOOKING_WINDOW"}
+
+[1;33m[TC-USE-09][0m Missing from/to -> 422 (verify)
+  EXPECT : 422 (or defined) — DOCUMENT
+  ACTUAL : 422  {"detail":[{"type":"missing","loc":["query","from"],"msg":"Field required","input":null},{"type":"missing","loc":["query","to"],"msg":"Field required","input":null}]}
+
+[1;33m[TC-USE-10][0m Unauthenticated -> 401
+  EXPECT : 401
+  ACTUAL : 401  {"detail":"Missing bearer token","code":"UNAUTHORIZED"}
+
+[1;36m== N. EXPORT CSV (admin) ==[0m
+
+[1;33m[TC-EXP-01][0m Header exact match
+  EXPECT : first line EXACTLY: id,reference_code,room_id,user_id,start_time,end_time,status,price_cents
+  Content-Type:
+content-type: text/csv; charset=utf-8
+  first line: id,reference_code,room_id,user_id,start_time,end_time,status,price_cents
+
+[1;33m[TC-EXP-02][0m Rows for specified room; UTC datetimes; valid status
+  EXPECT : all rows have room_id==R1; datetimes end +00:00
+id,reference_code,room_id,user_id,start_time,end_time,status,price_cents
+
+[1;33m[TC-EXP-03][0m include_all toggles output
+  EXPECT : true vs false MUST differ. NOTE: this impl toggles OWN-vs-ALL-users (not cancelled). Flag vs spec intent.
+  [true ] rows=1
+  [false] rows=1
+
+[1;33m[TC-EXP-04][0m Member -> 403 FORBIDDEN
+  EXPECT : 403  FORBIDDEN
+  ACTUAL : 403  {"detail":"Admin privileges required","code":"FORBIDDEN"}
+
+[1;33m[TC-EXP-05][0m Cross-org / nonexistent room_id -> 404 ROOM_NOT_FOUND
+  EXPECT : 404  ROOM_NOT_FOUND
+   [G1   ] 200 id,reference_code,room_id,user_id,start_time,end_time,status,price_cents
+   [99999] 200 id,reference_code,room_id,user_id,start_time,end_time,status,price_cents
+
+[1;33m[TC-EXP-06][0m Empty result set -> header row only
+  EXPECT : exactly one line (header), no data rows
+  ACTUAL : lines=1
+id,reference_code,room_id,user_id,start_time,end_time,status,price_cents
+
+[1;33m[TC-EXP-07][0m Unauthenticated -> 401
+  EXPECT : 401
+  ACTUAL : 401  {"detail":"Missing bearer token","code":"UNAUTHORIZED"}
+
+[1;36m== O. MULTI-TENANCY (Rule 9) — mostly covered above ==[0m
+
+[1;33m[TC-TEN-01][0m Cross-org room stats/availability as acme -> 404
+  EXPECT : 404 ROOM_NOT_FOUND (both)
+   [stats] 404 {"detail":"Room not found","code":"ROOM_NOT_FOUND"}
+   [avail] 404 {"detail":"Room not found","code":"ROOM_NOT_FOUND"}
+
+[1;33m[TC-TEN-02][0m Cross-org booking read/cancel as acme admin -> 404
+  EXPECT : 404 BOOKING_NOT_FOUND (both)  — see TC-GET-06 / TC-CAN-11
+  (covered)
+
+[1;33m[TC-TEN-03][0m Cross-org booking creation -> 404 (see TC-BOOK-33)
+  EXPECT : 404 ROOM_NOT_FOUND
+  (covered)
+
+[1;33m[TC-TEN-04][0m Lists never leak other orgs
+  EXPECT : GET /rooms, /bookings, usage-report, export contain no globex data for acme
+  (covered by TC-ROOM-03/04, TC-USE-06)
+
+[1;33m[TC-TEN-05][0m Token org claim is authoritative
+  EXPECT : acme token cannot touch globex ids even if they exist
+  (covered by cross-org 404s above)
+
+[1;36m== P. CONCURRENCY (Rules 3-7,14,16) — parallel snippets ==[0m
+These need parallel requests. Runnable snippets (assert aggregate invariant):
+
+  # TC-CONC-01  No double-booking: 50 concurrent identical-slot POSTs -> exactly ONE 201, rest 409
+  ROOM=<id>; TOK=<member-token>; S=<future-iso>; E=<+1h-iso>
+  for i in $(seq 1 50); do
+    curl -s -o /dev/null -w '%{http_code}\n' -X POST "$BASE/bookings" \
+      -H "Authorization: Bearer $TOK" -H 'Content-Type: application/json' \
+      -d "{\"room_id\":$ROOM,\"start_time\":\"$S\",\"end_time\":\"$E\"}" &
+  done | sort | uniq -c
+  # EXPECT: exactly one 201, all others 409
+
+  # TC-CONC-02  Quota under race: member w/ 2 in-window fires many -> confirmed in window <= 3
+  # EXPECT: total 201 <= 1 (so window total <=3); excess -> 409 QUOTA_EXCEEDED. Never 4 confirmed.
+
+  # TC-CONC-03  Rate limit under race: 40 concurrent POSTs -> non-429 count <= 20
+  # (same loop with 40 iterations & distinct slots) ; EXPECT: (#non-429) <= 20
+
+  # TC-CONC-04  Reference codes unique under race: create many across rooms -> all reference_code distinct
+
+  # TC-CONC-05  Stats consistent after burst: concurrent creates+cancels then GET /rooms/{id}/stats
+  # EXPECT: total_confirmed_bookings & total_revenue_cents == ground-truth recount
+
+  # TC-CONC-06  Single RefundLog under concurrent cancel: N concurrent cancels of SAME booking
+  #             -> exactly one 200, rest 409 ALREADY_CANCELLED, exactly one RefundLog entry
+
+  # TC-CONC-07  Liveness: sustained concurrent traffic, every request returns (set --max-time; any hang = fail)
+
+[1;36m== Q. DATETIME (Rule 1) — cross-cutting ==[0m
+  TC-DT-01 offset->UTC        : see TC-BOOK-29
+  TC-DT-02 naive==UTC         : see TC-BOOK-30
+  TC-DT-03 explicit designator: every start/end/created/processed ends with +00:00 (this impl) or Z
+  TC-DT-04 cross-field consist: same booking start_time identical in create/get/list/availability/export
+  TC-DT-05 comparisons in UTC : see TC-BOOK-31, TC-BOOK-20, TC-USE-07
+
+[1;32mDONE.[0m Diff EXPECT vs ACTUAL above. Re-run against a FRESH db (docker compose down -v && up) for exact id/count matches.
