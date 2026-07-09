@@ -6,7 +6,8 @@ import uuid
 from datetime import datetime, timedelta, timezone
 
 import jwt
-from fastapi import Depends, Request
+from fastapi import Depends
+from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from sqlalchemy.orm import Session
 
 from .config import (
@@ -98,12 +99,16 @@ def is_refresh_token_revoked(payload: dict) -> bool:
     return payload.get("jti") in _revoked_refresh_tokens
 
 
-def get_token_payload(request: Request) -> dict:
-    header = request.headers.get("Authorization")
-    if not header or not header.startswith("Bearer "):
+# auto_error=False so missing/malformed headers raise our contract 401 (not 403).
+_bearer_scheme = HTTPBearer(auto_error=False)
+
+
+def get_token_payload(
+    credentials: HTTPAuthorizationCredentials | None = Depends(_bearer_scheme),
+) -> dict:
+    if credentials is None:
         raise AppError(401, "UNAUTHORIZED", "Missing bearer token")
-    token = header[len("Bearer "):].strip()
-    payload = decode_token(token)
+    payload = decode_token(credentials.credentials.strip())
     if payload.get("type") != "access":
         raise AppError(401, "UNAUTHORIZED", "Wrong token type")
     if payload.get("jti") in _revoked_tokens:

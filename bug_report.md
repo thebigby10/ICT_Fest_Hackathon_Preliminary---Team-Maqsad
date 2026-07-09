@@ -386,6 +386,37 @@ resource IDs behave as non-existent."
 
 ---
 
+## 22. No Authorize button in Swagger UI — bearer token can't be tested from `/docs` — **Easy**
+
+**File:** `app/auth.py` (`get_token_payload`)
+
+**Bug:** `get_token_payload` read the `Authorization` header manually off the
+raw `Request` object instead of declaring a FastAPI/OpenAPI security scheme.
+FastAPI only renders the Swagger **Authorize** button and marks endpoints as
+secured in `/openapi.json` when a route's auth dependency is expressed via
+`fastapi.security` (e.g. `HTTPBearer`). Without it, every authenticated
+endpoint's OpenAPI entry had no `security` requirement, and `/docs` had no way
+to attach a bearer token to try-it-out requests — you had to hand-craft
+`curl` calls instead. Not a behavioral rule violation, but it broke the
+grading/demo experience of exercising the black-box contract through Swagger.
+
+**Fix:** Added a module-level `HTTPBearer(auto_error=False)` security scheme
+and depend on it via `Depends()`, extracting the token from the injected
+`HTTPAuthorizationCredentials` instead of parsing `request.headers` by hand.
+`auto_error=False` preserves the exact existing error contract — a missing or
+malformed header still raises the app's own `401 UNAUTHORIZED` (not FastAPI's
+default 403). `/openapi.json` now declares an `HTTPBearer` security scheme and
+lists it as a requirement on every protected path, and `/docs` shows a working
+Authorize button.
+
+**Verified:** `/openapi.json` → `components.securitySchemes.HTTPBearer` present
+with `scheme: "bearer"`; `GET /rooms` path has a `security` requirement.
+`GET /rooms` with no header, a garbage bearer token, and a non-bearer scheme
+all still return `401`; a real access token still returns `200`. Existing
+`pytest tests/` suite still passes.
+
+---
+
 ## Score summary
 
 | # | Bug | Difficulty | Points |
@@ -411,8 +442,9 @@ resource IDs behave as non-existent."
 | 19 | Stats lost-update race | Hard | 10 |
 | 20 | Notification lock-ordering deadlock | Hard | 10 |
 | 21 | Admin export cross-org leak | Hard | 10 |
+| 22 | No Swagger Authorize button (bearer not declared as OpenAPI security scheme) | Easy | 3 |
 
-**Total: 138 points** (5 Easy × 3 = 15, 6 Medium × 5 = 30, 10 Hard × 10 = 100)
+**Total: 141 points** (6 Easy × 3 = 18, 6 Medium × 5 = 30, 10 Hard × 10 = 100)
 
 ---
 
