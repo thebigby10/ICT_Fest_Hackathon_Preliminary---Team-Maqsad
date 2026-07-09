@@ -69,6 +69,7 @@ def availability(
     cached = cache.get_availability(room.id, date)
     if cached is not None:
         return cached
+    epoch = cache.get_availability_epoch(room.id, date)
 
     try:
         day = datetime.strptime(date, "%Y-%m-%d").date()
@@ -96,7 +97,7 @@ def availability(
             for b in bookings
         ],
     }
-    cache.set_availability(room.id, date, result)
+    cache.set_availability(room.id, date, result, epoch)
     return result
 
 

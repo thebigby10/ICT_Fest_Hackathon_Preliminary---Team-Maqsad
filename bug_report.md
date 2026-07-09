@@ -564,6 +564,76 @@ duration checks.
 
 ---
 
+## 30. Concurrent duplicate registration crashes with `500` instead of `409 USERNAME_TAKEN` — **Hard**
+
+**File:** `app/routers/auth.py` (`register`)
+
+**Bug:** `register` did a check-then-act on both the org lookup and the
+username lookup with no locking: it read `Organization`/`User` as absent,
+then inserted. The DB schema already enforces uniqueness (`Organization.name`
+unique; `User.__table_args__` has `UniqueConstraint("org_id", "username")`),
+so under concurrent requests for the same brand-new org name, or the same
+username within an existing org, the losing request's `db.commit()` raised
+an uncaught `sqlalchemy.exc.IntegrityError`. Same root cause as #29 — `app/main.py`
+only has an error handler for the app's own `AppError`, so the IntegrityError
+propagated to a bare `500` instead of the documented `409 USERNAME_TAKEN`.
+Violates Rule 15 and the crash-avoidance principle under Rule 16.
+
+**Fix:** Wrapped both the org insert and the user insert in
+`try/except IntegrityError: db.rollback()`. On the org-insert race, roll back
+and re-`SELECT` the org (now committed by the winner) and continue as
+`role="member"`. On the user-insert race, roll back and raise
+`AppError(409, "USERNAME_TAKEN", …)`. Verified with 10 concurrent identical
+registrations: exactly one `201`, nine `409 USERNAME_TAKEN`, zero `500`s.
+
+---
+
+## 31. Refresh-token single-use check is not atomic — replayable under concurrency — **Hard**
+
+**Files:** `app/auth.py`, `app/routers/auth.py` (`refresh`)
+
+**Bug:** The single-use enforcement added for bug #3 was check-then-act with
+no lock: `refresh()` called `is_refresh_token_revoked(data)`, then did a real
+DB round trip to look up the user, and only afterward called
+`revoke_refresh_token(data)` to mark the jti used. `_revoked_refresh_tokens`
+was a plain `set` with no `threading.Lock`, same shape as the already-fixed
+races in #10/#11/#14/#17/#18. Two concurrent `POST /auth/refresh` requests
+presenting the same refresh token could both pass the revoked-check before
+either marked it used, each minting its own token pair from one refresh
+token. Violates Rule 8 ("Refresh tokens are single-use … reuse → 401") under
+concurrent requests.
+
+**Fix:** Replaced `revoke_refresh_token`/`is_refresh_token_revoked` with a
+single atomic `try_consume_refresh_token()` guarded by a module-level
+`threading.Lock()`, called immediately after the token-type check and before
+the DB lookup. Verified with 10 concurrent replays of the same refresh
+token: exactly one `200`, nine `401`.
+
+---
+
+## 32. Report/availability cache can permanently serve stale data after a concurrent mutation — **Hard**
+
+**Files:** `app/cache.py`, `app/routers/admin.py` (`usage_report`),
+`app/routers/rooms.py` (`availability`)
+
+**Bug:** Both endpoints followed check-cache → (miss) query DB → compute →
+write-cache, while `create_booking`/`cancel_booking` invalidate the relevant
+cache entry *after* their commit. With no coordination between the two, a
+reader that missed the cache and started its DB query could have a writer
+commit and invalidate *in between* — the invalidation found nothing cached
+(no-op), and the reader's now-stale result then overwrote the cache
+afterward, serving stale data indefinitely until an unrelated later
+mutation happened to touch the same key. Violates Rule 12 / Rule 13 ("must
+reflect current state immediately") under concurrent requests.
+
+**Fix:** Added a per-key epoch counter in `app/cache.py`, bumped on every
+`invalidate_*` call. Callers capture the epoch before running their DB query
+and pass it to `set_report`/`set_availability`, which only commits the write
+if the epoch is still current — a write that lost the race to a concurrent
+invalidation is silently discarded instead of caching stale data.
+
+---
+
 ## Score summary
 
 | # | Bug | Difficulty | Points |
@@ -597,8 +667,11 @@ duration checks.
 | 27 | Reference-code counter resets on server restart | Hard | 10 |
 | 28 | Lazy stats init: pre-read cancel corrupts stats after restart | Hard | 10 |
 | 29 | Malformed booking datetime crashes with 500 instead of 400 | Easy | 3 |
+| 30 | Concurrent duplicate registration crashes with 500 instead of 409 | Hard | 10 |
+| 31 | Refresh-token single-use check not atomic (replayable) | Hard | 10 |
+| 32 | Report/availability cache lost-invalidation race | Hard | 10 |
 
-**Total: 194 points** (7 Easy × 3 = 21, 9 Medium × 5 = 45, 13 Hard × 10 = 130)
+**Total: 224 points** (7 Easy × 3 = 21, 9 Medium × 5 = 45, 16 Hard × 10 = 160)
 
 ---
 

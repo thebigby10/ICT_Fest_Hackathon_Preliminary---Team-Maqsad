@@ -1,5 +1,6 @@
 """Authentication endpoints: register, login, refresh, logout."""
 from fastapi import APIRouter, Depends
+from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
 from ..auth import (
@@ -8,9 +9,8 @@ from ..auth import (
     decode_token,
     get_token_payload,
     hash_password,
-    is_refresh_token_revoked,
     revoke_access_token,
-    revoke_refresh_token,
+    try_consume_refresh_token,
     verify_password,
 )
 from ..database import get_db
@@ -28,8 +28,14 @@ def register(payload: RegisterRequest, db: Session = Depends(get_db)):
     if org is None:
         org = Organization(name=payload.org_name)
         db.add(org)
-        db.commit()
-        db.refresh(org)
+        try:
+            db.commit()
+        except IntegrityError:
+            db.rollback()
+            org = db.query(Organization).filter(Organization.name == payload.org_name).first()
+            role = "member"
+        else:
+            db.refresh(org)
 
     existing = (
         db.query(User)
@@ -46,7 +52,11 @@ def register(payload: RegisterRequest, db: Session = Depends(get_db)):
         role=role,
     )
     db.add(user)
-    db.commit()
+    try:
+        db.commit()
+    except IntegrityError:
+        db.rollback()
+        raise AppError(409, "USERNAME_TAKEN", "Username already taken in this organization")
     db.refresh(user)
     return {
         "user_id": user.id,
@@ -80,12 +90,11 @@ def refresh(payload: RefreshRequest, db: Session = Depends(get_db)):
     data = decode_token(payload.refresh_token)
     if data.get("type") != "refresh":
         raise AppError(401, "UNAUTHORIZED", "Wrong token type")
-    if is_refresh_token_revoked(data):
+    if not try_consume_refresh_token(data):
         raise AppError(401, "UNAUTHORIZED", "Token has been revoked")
     user = db.query(User).filter(User.id == int(data["sub"])).first()
     if user is None:
         raise AppError(401, "UNAUTHORIZED", "Unknown user")
-    revoke_refresh_token(data)
     return {
         "access_token": create_access_token(user),
         "refresh_token": create_refresh_token(user),
