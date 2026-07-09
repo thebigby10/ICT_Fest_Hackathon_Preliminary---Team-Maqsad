@@ -658,6 +658,27 @@ constraint in place.
 
 ---
 
+## 34. Missing `cache.invalidate_report` in `create_room` — **Easy**
+
+**File:** `app/routers/rooms.py` (`create_room`)
+
+**Bug:** Same shape as #24, but on the room-creation path instead of
+booking-creation: `create_room` inserted the new room and committed, but
+never called `cache.invalidate_report(admin.org_id)`. If an admin had already
+fetched `GET /admin/usage-report` for a date range (populating the cache),
+then created a new room, a subsequent fetch of the same range kept returning
+the pre-existing cached report — missing the new room entirely, even though
+Rule 12 requires the report to include every room in the org "including rooms
+with zero bookings" and to "reflect the current state immediately."
+
+**Fix:** Added `cache.invalidate_report(admin.org_id)` after `db.refresh(room)`
+in `create_room`, mirroring the existing calls in `create_booking` and
+`cancel_booking`.
+
+**Verified:** Existing `pytest tests/` suite (46 tests) still passes.
+
+---
+
 ## Fixes summary
 
 | # | Bug | Difficulty |
@@ -695,7 +716,8 @@ constraint in place.
 | 31 | Refresh-token single-use check not atomic (replayable) | Hard |
 | 32 | Report/availability cache lost-invalidation race | Hard |
 | 33 | `reference_code` missing storage-level uniqueness constraint | Easy |
+| 34 | Missing `cache.invalidate_report` in `create_room` | Easy |
 
-**Total: 33 bugs fixed** (8 Easy, 9 Medium, 16 Hard)
+**Total: 34 bugs fixed** (9 Easy, 9 Medium, 16 Hard)
 
 
