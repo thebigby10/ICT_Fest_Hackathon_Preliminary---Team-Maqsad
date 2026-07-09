@@ -500,6 +500,47 @@ locking ensures it runs exactly once, avoiding a DB query on every creation.
 
 ---
 
+## 28. Lazy stats initialization: cancel-before-first-read permanently corrupts room stats — **Hard**
+
+**Files:** `app/main.py`, `app/services/stats.py` (interaction), `app/routers/bookings.py` (interaction)
+
+**Bug:** The fix for #26 seeded `_stats` from the database, but only lazily —
+`stats.ensure_initialized(db)` was called solely from the `GET /rooms/{id}/stats`
+endpoint. `create_booking` and `cancel_booking` call `stats.record_create` /
+`stats.record_cancel` unconditionally, so after a server restart a mutation
+could land on the still-empty stats map **before** the first stats read:
+
+1. **Permanent corruption via cancel.** Restart with one confirmed booking
+   (price 2000) for a room. Cancel it before anyone reads stats:
+   `record_cancel` writes `{count: max(0, 0-1) = 0, revenue: 0 - 2000 = -2000}`.
+   The later `ensure_initialized` only overwrites rooms that appear in the
+   aggregate of *confirmed* bookings — this room now has none, so no row is
+   returned and the garbage entry survives. `GET /rooms/{id}/stats` reports
+   `total_revenue_cents: -2000` forever. Violates Rule 14 ("always consistent
+   with the bookings themselves").
+2. **Double-count race via create.** Thread A commits a new booking, then a
+   concurrent stats request runs `ensure_initialized` (its DB aggregate already
+   includes A's committed row), then A's `record_create` increments on top —
+   the booking is counted twice.
+
+**Fix:** Seed the in-memory state once at startup in `app/main.py` (right after
+`Base.metadata.create_all`), before the app can serve any request:
+`stats.ensure_initialized(db)` and `reference.ensure_initialized(db)` inside a
+short-lived `SessionLocal()`. Initialization now always precedes any
+`record_*` call, so increments apply to a correct baseline and the lazy
+endpoint/creation-path calls become harmless no-ops. (This also hardens #27's
+reference counter: it is now seeded even if the first request after a restart
+were somehow to race module state.)
+
+**Verified:** Two-process regression check (process 1 creates a confirmed
+booking; process 2 — a fresh interpreter simulating a restart — cancels it
+*first*, then reads stats): pre-fix the stats endpoint returned
+`total_revenue_cents: -2000`; post-fix it returns
+`{"total_confirmed_bookings": 0, "total_revenue_cents": 0}`. Existing
+`pytest tests/` suite still passes.
+
+---
+
 ## Score summary
 
 | # | Bug | Difficulty | Points |
@@ -531,8 +572,9 @@ locking ensures it runs exactly once, avoiding a DB query on every creation.
 | 25 | Admin incorrectly subject to booking quota | Medium | 5 |
 | 26 | Room stats lost on server restart | Hard | 10 |
 | 27 | Reference-code counter resets on server restart | Hard | 10 |
+| 28 | Lazy stats init: pre-read cancel corrupts stats after restart | Hard | 10 |
 
-**Total: 181 points** (6 Easy × 3 = 18, 9 Medium × 5 = 45, 12 Hard × 10 = 120)
+**Total: 191 points** (6 Easy × 3 = 18, 9 Medium × 5 = 45, 13 Hard × 10 = 130)
 
 ---
 
@@ -550,3 +592,6 @@ locking ensures it runs exactly once, avoiding a DB query on every creation.
   pass.
 - Cross-org export leak test: exporting a foreign org's `room_id` with
   `include_all=true` now returns an empty CSV body (header only).
+- Restart-simulation test (two separate interpreter processes sharing one DB
+  file): cancel-before-first-stats-read after a "restart" now yields
+  `{count: 0, revenue: 0}` instead of negative revenue.
